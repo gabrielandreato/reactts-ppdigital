@@ -1,0 +1,21 @@
+.NavHeader{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NavHeader li {
+    color: white;
+    list-style: none;
+}
+
+.NavHeader p {
+    font-weight: 700;
+}
+
+
+

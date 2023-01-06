@@ -1,0 +1,46 @@
+.BarraNavegacao {
+    background-color: var(--minerva-color-palha-700);
+    padding: 0 8rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+}
+
+.BarraNavegacao li * {
+    display: inline-block;
+    padding: .8rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    text-underline: none;
+    color: var(--font-color-black);
+    transition: .5s;
+}
+
+
+.BarraNavegacao li *:hover {
+    border-radius: 1rem;
+    transition: .5s;
+    cursor: pointer;
+    color: var(--font-color-white);
+}
+
+  /* Layout Mobile */
+@media screen and (max-width: 48rem) {
+
+nav {
+    margin: 0;
+}
+.BarraNavegacao {
+  width: 100%;
+  padding: 0;
+}
+h1  {
+    text-align: center;
+    padding-left: 0;
+}
+nav {
+    position: static;
+}
+}

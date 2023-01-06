@@ -1,0 +1,21 @@
+label {
+    width: 100%;
+    display: block;
+    padding: .8rem 0;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem 0;
+    text-align: center;
+    font-size: 1.6rem;
+    border-radius: 2rem;
+    border: var(--minerva-color-azul-200) solid .1rem ;
+}
+
+input:focus {
+    outline: var(--minerva-color-azul-200) solid .1rem;
+
+}

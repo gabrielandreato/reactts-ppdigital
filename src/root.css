@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #F6F6F6;
+  --button-primary-color: #bf404d;
+  --font-color-black: #000000;
+  --font-color-white: #F6F6F6;
+  --font-color-grey-inative: #A9A9A9;
+
+  --minerva-color-red-200: #eb7580;
+  --minerva-color-red-500: #e84752;
+  --minerva-color-red-700: #bf404d;
+
+  --minerva-color-palha-200: #F5f2d4;
+  --minerva-color-palha-400: #E3e0b0;
+  --minerva-color-palha-700: #Bdb58c;
+
+  --minerva-color-azul-200: #385461;
+  --minerva-color-azul-400: #2b3d4a;
+  --minerva-color-azul-700: #24303b;
+
+  font-size: 62.5%;
+
+}

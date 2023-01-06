@@ -1,0 +1,41 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--minerva-color-azul-700);
+}
+
+.LogoMinerva {
+    padding: 1.6rem;
+}
+
+hr {
+    width: 100%;
+
+}
+
+.Section {
+    height: 2.4rem;
+    font-size: 1.2rem;
+
+}
+
+.Section li {
+    display: grid;
+    align-items: center;
+    height: 2.4rem;
+    padding: 0 0 0 1.2rem;
+    transition: .5s;
+
+}
+
+.Section li * {
+    text-decoration: none;
+    color: var(--font-color-grey-inative);
+}
+
+.Section li:hover {
+    background-color: var(--minerva-color-azul-400);
+    color: var(--font-color-white);
+    transition: .5s;
+}

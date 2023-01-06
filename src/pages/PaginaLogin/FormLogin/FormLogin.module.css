@@ -1,0 +1,43 @@
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem;
+    border-radius: 2rem;
+    border: #4f4f4f solid .2rem;
+    background-color: var(--primary-color);
+    box-shadow: .5rem .5rem .5rem var(--minerva-color-azul-700) ;
+
+}
+
+.corpoForm form {
+    width: 40rem;
+    height: 30rem;
+}
+
+.formWrapper h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 1.6rem 0;
+}
+
+.formWrapper img {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+.formWrapper hr {
+    margin-top: 1.6rem;
+}
+
+.formWrapper a {
+    display: block;
+    text-align: center;
+    margin-top: .8rem;
+}
+
+
+
+

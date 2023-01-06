@@ -1,0 +1,14 @@
+.BotaoNavBar {
+    cursor: pointer;
+    transition: .5s;
+    border-radius: .8rem;
+    color: var(--font-color-grey-inative);
+    padding: .8rem;
+}
+
+.BotaoNavBar:hover {
+    cursor: pointer;
+    transition: .5s;
+    background: var(--minerva-color-azul-200);
+    color: var(--font-color-white);
+}
