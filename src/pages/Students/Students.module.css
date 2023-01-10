@@ -6,7 +6,7 @@
 }
 .Header {
     grid-area: h;
-
+    background-color: var(--minerva-color-azul-700);
 }
 
 .Content {

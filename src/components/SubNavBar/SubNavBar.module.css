@@ -1,0 +1,25 @@
+.Header {
+    background-color: var(--minerva-color-azul-700);
+    height: 6rem;
+}
+
+.NavHeader{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.NavHeader li {
+    list-style: none;
+    text-decoration: none;
+    color: var(--font-color-white);
+}
+
+.NavHeader p {
+    font-weight: 700;
+}

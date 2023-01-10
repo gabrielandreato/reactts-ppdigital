@@ -27,3 +27,7 @@
     grid-area: cont;
 }
 
+@media screen and (max-width: 450px) {
+    .paginaBase{grid-template-columns: 0 1fr ;}
+}
+

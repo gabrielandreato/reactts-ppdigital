@@ -6,12 +6,8 @@
 }
 
 .LogoMinerva {
-    padding: 1.6rem;
-}
-
-hr {
-    width: 100%;
-
+    padding: .8rem;
+    width: 80%;
 }
 
 .Section {
@@ -20,7 +16,7 @@ hr {
 
 }
 
-.Section li {
+.Section * {
     display: grid;
     align-items: center;
     height: 2.4rem;
@@ -29,13 +25,18 @@ hr {
 
 }
 
-.Section li * {
+.Section * {
     text-decoration: none;
-    color: var(--font-color-grey-inative);
+    color: var(--font-color-white);
 }
 
-.Section li:hover {
+.Section *:hover {
     background-color: var(--minerva-color-azul-400);
-    color: var(--font-color-white);
     transition: .5s;
 }
+
+@media screen and  (max-width: 450px){
+    .Section{
+        display: none;}
+}
+

@@ -8,12 +8,13 @@ export const TableCourses = () => {
     const listaCursos = useRecoilValue(courseList)
 
     return (
+        <div className={styles.Content}>
         <table className={styles.Table}>
             <thead className={styles.TableHead}>
             <tr className={styles.TableHeadValue}>
-                <th>ID</th>
+                <th className={styles.TableHeadValueId}>ID</th>
                 <th>Nome do Curso</th>
-                <th>Funções</th>
+                <th className={styles.TableHeadValueFunctions}>Funções</th>
             </tr>
 
             </thead>
@@ -21,7 +22,7 @@ export const TableCourses = () => {
             {listaCursos.map(
                 course => (
                     <tr className={styles.TableBodyValue} key={course.id}>
-                        <td>{course.id}</td>
+                        <td className={styles.TableBodyValueId}>{course.id}</td>
                         <td>{course.course}</td>
                         {/*<td>{course.data_final.getDate()}</td>*/}
                         <td>
@@ -32,12 +33,12 @@ export const TableCourses = () => {
                 )
             )}
             </tbody>
-            <tfoot className={styles.TableFoot}>
-            <tr>
-                <li> Anterior</li>
-                <li>Proxima</li>
-            </tr>
-            </tfoot>
         </table>
+
+                <ul className={styles.TableFoot}>
+                    <li> Anterior</li>
+                    <li>Proxima</li>
+                </ul>
+        </div>
     )
 }

@@ -1,7 +1,7 @@
 import IInput from "../../interfaces/IInput";
 import './Input.module.css'
 
-const Input = ({htmlFor, type, children}: IInput) => {
+export const Input = ({htmlFor, type, children}: IInput) => {
     return (
         <div>
             <label htmlFor={htmlFor}>{children}</label>

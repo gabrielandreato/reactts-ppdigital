@@ -4,12 +4,14 @@ import {Outlet} from "react-router-dom";
 import styles from './PaginaBase.module.css'
 import {useState} from "react";
 import barraLateral from "./BarraLateral";
+import {Modal} from "../../components/Modal";
 
 const PaginaBase = () => {
 
 
     return(
         <div className={styles.paginaBase}>
+
             <div className={styles.barraNavegacao}>
                 <BarraNavegacao />
             </div>

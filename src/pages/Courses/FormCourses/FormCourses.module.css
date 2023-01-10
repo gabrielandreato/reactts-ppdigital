@@ -1,0 +1,24 @@
+.Nav {
+    height: 6rem;
+}
+
+.FormWrapper {
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.Form {
+    width: 60%;
+}
+
+.Form label {
+    color: var(--font-color-white);
+    margin-top: 1.2rem;
+}
+
+.Form button {
+    margin-top: 2.4rem
+}
