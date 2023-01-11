@@ -6,6 +6,8 @@ import {Students} from "../pages/Students";
 import {FormCourses} from "../pages/Courses/FormCourses";
 import {FormStudent} from "../pages/Students/FormStudent";
 import {TrainingMatrix} from "../pages/TrainingMatrix";
+import {Registration} from "../pages/Registration";
+import {FormRegistration} from "../pages/Registration/FormRegistration";
 
 const Rotas = () => {
     return (
@@ -19,6 +21,9 @@ const Rotas = () => {
                 <Route path={'alunos'} element={<Students />}/>
                 <Route path={'formulario-aluno'} element={<FormStudent />}/>
                 <Route path={'formulario-aluno/:id'} element={<FormStudent />}/>
+                <Route path={'matriculas'} element={<Registration />}/>
+                <Route path={'formulario-matricula'} element={<FormRegistration />}/>
+                <Route path={'formulario-matricula/:id'} element={<FormRegistration />}/>
             </Route>
         </Routes>
     )

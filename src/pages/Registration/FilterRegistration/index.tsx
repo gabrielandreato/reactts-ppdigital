@@ -1,23 +1,19 @@
-import styles from "./FilterStudent.module.css";
+import styles from "./FilterCourses.module.css";
 import {useState} from "react";
 import {useRecoilState} from "recoil";
-import {studentListFilterState} from "../../../state/atom";
+import {courseListFilterState} from "../../../state/atom";
 
 
 
-export const FilterStudent = () => {
-    const [filterValue, setFilterValue] = useState<string>('')
-    const [filter, setFilter] = useRecoilState(studentListFilterState)
-
+export const FilterRegistration = () => {
+    const [filter, setFilter] = useRecoilState(courseListFilterState)
 
     const updateFilter = (value: string) => {
         setFilter(value);
     }
 
-
     return (
         <div className={styles.Filter}>
-            {/*<label htmlFor="filter">Filtro:</label>*/}
             <input name="filter"
                    type="text"
                    value={filter}

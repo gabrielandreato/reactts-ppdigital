@@ -4,6 +4,8 @@ import {TableCourses} from "./TableCourses";
 import {SubNavBar} from "../../components/SubNavBar";
 import {useNavigate} from "react-router-dom";
 import {BotaoNavBar} from "../../components/BotaoNavBar";
+import {FilterStudent} from "../Students/FilterStudent";
+import {FilterCourses} from "./FilterCourses";
 
 export const Courses = () => {
 
@@ -14,7 +16,7 @@ export const Courses = () => {
             <div className={styles.Header}>
             <SubNavBar>
                 <li><p>Controle de Cursos</p></li>
-                <li><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-curso')}>Novo Curso</BotaoNavBar></li>
+                <li className={styles.NavFunctions}><FilterCourses /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-curso')}>Novo Curso</BotaoNavBar></li>
             </SubNavBar>
             </div>
             <div className={styles.Content}>
