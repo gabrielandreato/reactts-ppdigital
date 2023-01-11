@@ -1,11 +1,24 @@
 import styles from "./TableCourses.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {courseList} from "../../../state/atom";
+import {useEffect, useState} from "react";
+import {http} from "../../../http";
+import ICourses from "../../../interfaces/ICourses";
+import {useNavigate} from "react-router-dom";
 
 export const TableCourses = () => {
 
     const listaCursos = useRecoilValue(courseList)
+    const [coursesListValues, setCoursesListValues] = useRecoilState<ICourses[]>(courseList)
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        http.get('cursos/')
+            .then(response => setCoursesListValues(response.data))
+
+    })
 
     return (
         <div className={styles.Content}>
@@ -19,14 +32,14 @@ export const TableCourses = () => {
 
             </thead>
             <tbody className={styles.TableBody}>
-            {listaCursos.map(
+            {coursesListValues.map(
                 course => (
                     <tr className={styles.TableBodyValue} key={course.id}>
                         <td className={styles.TableBodyValueId}>{course.id}</td>
-                        <td>{course.course}</td>
+                        <td>{course.name}</td>
                         {/*<td>{course.data_final.getDate()}</td>*/}
                         <td>
-                            <BotaoNavBar>Editar</BotaoNavBar>
+                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>Editar</BotaoNavBar>
                             <BotaoNavBar>Excluir</BotaoNavBar>
                         </td>
                     </tr>

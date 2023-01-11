@@ -1,18 +1,21 @@
 import styles from "./TableStudents.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState} from "recoil";
 import {studentList} from "../../../state/atom";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useEffect} from "react";
 import IStudent from "../../../interfaces/IStudent";
+import {http} from "../../../http";
+import {useNavigate} from "react-router-dom";
+
 
 export const TableStudents = () => {
 
     const [studentListState, setStudentListState] = useRecoilState<IStudent[]>(studentList);
 
+    const navigate = useNavigate();
 
     useEffect(() => {
-    axios.get('http://localhost:8000/funcionarios/')
+    http.get('alunos/')
         .then(response => {setStudentListState(response.data)
         })
     }, [])
@@ -37,8 +40,8 @@ export const TableStudents = () => {
                         <td>{student.name}</td>
                         {/*<td>{student.manager}</td>*/}
                         <td>
-                            <BotaoNavBar>Editar</BotaoNavBar>
-                            <BotaoNavBar>Excluir</BotaoNavBar>
+                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}>Editar</BotaoNavBar>
+                            <BotaoNavBar>Inativar</BotaoNavBar>
                         </td>
                     </tr>
                 )

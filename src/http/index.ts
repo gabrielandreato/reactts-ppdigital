@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const index = axios.create({
+export const http = axios.create({
     baseURL: 'http://localhost:8000/',
-    headers: {
-        Accept: 'application/json',
-        Content: 'application/json',
+    // headers: {
+    //     Accept: 'application/json',
+    //     Content: 'application/json',
         // Authorization: `Token ${sessionStorage.getItem('token')}`
-    }
+    // }
 })

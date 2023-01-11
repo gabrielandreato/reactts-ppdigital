@@ -1,0 +1,21 @@
+.Filter {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    grid-gap: .8rem;
+}
+
+.Filter label {
+    color: var(--font-color-white);
+}
+
+.Filter input:placeholder-shown {
+    width: 12rem;
+    transition: .25s;
+    transition: .25s;
+}
+
+.Filter input {
+    width: 32rem;
+    transition: .25s;
+}

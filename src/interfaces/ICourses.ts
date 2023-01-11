@@ -1,5 +1,5 @@
 export default interface ICourses {
     id: number,
-    course: string,
-    data_final: Date
+    name: string,
+    // data_final: Date
 }

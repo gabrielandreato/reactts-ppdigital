@@ -15,8 +15,10 @@ const Rotas = () => {
                 <Route path={'matriz-treinamentos'} element={<TrainingMatrix />}/>
                 <Route path={'cursos'} element={<Courses />}/>
                 <Route path={'formulario-curso'} element={<FormCourses />}/>
+                <Route path={'formulario-curso/:id'} element={<FormCourses />}/>
                 <Route path={'alunos'} element={<Students />}/>
                 <Route path={'formulario-aluno'} element={<FormStudent />}/>
+                <Route path={'formulario-aluno/:id'} element={<FormStudent />}/>
             </Route>
         </Routes>
     )

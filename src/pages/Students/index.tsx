@@ -3,6 +3,7 @@ import {TableStudents} from "./TableStudents";
 import {SubNavBar} from "../../components/SubNavBar";
 import {BotaoNavBar} from "../../components/BotaoNavBar";
 import {useNavigate} from "react-router-dom";
+import {FilterStudent} from "./FilterStudent";
 
 export const Students = () => {
 
@@ -12,7 +13,7 @@ export const Students = () => {
             <div className={styles.Header}>
         <SubNavBar>
             <li><p>Controle de Alunos</p></li>
-            <li><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-aluno')}>Novo Aluno</BotaoNavBar></li>
+            <li className={styles.NavFunctions}><FilterStudent /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-aluno')}>Novo Aluno</BotaoNavBar></li>
         </SubNavBar>
             </div>
             <div className={styles.Content}>

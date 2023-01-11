@@ -16,6 +16,10 @@
     padding-top: 3rem;
 }
 
+.NavFunctions {
+    display: flex;
+}
+
 
 
 .Footer {

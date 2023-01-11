@@ -15,10 +15,16 @@
 
 
 .NavHeader li {
+    display: flex;
+}
+
+.NavHeader p {
     list-style: none;
     text-decoration: none;
     color: var(--font-color-white);
 }
+
+
 
 .NavHeader p {
     font-weight: 700;
