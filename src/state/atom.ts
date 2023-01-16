@@ -23,14 +23,14 @@ export const filteredCourseList = selector({
         const filter = get(courseListFilterState).trim();
         const list = get(courseList);
 
-    switch (filter) {
-        case filter:
-            return list.filter((item) =>
-                item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter)
-            )
-        default:
-            return list
-    }
+        switch (filter) {
+            case filter:
+                return list.filter((item) =>
+                    item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter)
+                )
+            default:
+                return list
+        }
     }
 })
 
@@ -54,14 +54,14 @@ export const filteredStudentList = selector({
         const filter = get(studentListFilterState).trim();
         const list = get(studentList);
 
-    switch (filter) {
-        case filter:
-            return list.filter((item) =>
-                item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter)
-            )
-        default:
-            return list
-    }
+        switch (filter) {
+            case filter:
+                return list.filter((item) =>
+                    item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter)
+                )
+            default:
+                return list
+        }
     }
 })
 
@@ -85,14 +85,48 @@ export const filteredRegistrationList = selector({
         const filter = get(registrationListFilterState).trim();
         const list = get(registrationList);
 
-    switch (filter) {
-        case filter:
-            return list.filter((item) =>
-                item.student_name.toLowerCase().includes(filter) || item.student_name.toUpperCase().includes(filter) ||
-                item.course_name.toLowerCase().includes(filter) || item.course_name.toUpperCase().includes(filter)
-            )
-        default:
-            return list
+        switch (filter) {
+            case filter:
+                return list.filter((item) =>
+                    item.student_name.toLowerCase().includes(filter) || item.student_name.toUpperCase().includes(filter) ||
+                    item.student_name.includes(filter) ||
+                    item.course_name.toLowerCase().includes(filter) || item.course_name.toUpperCase().includes(filter) ||
+                    item.course_name.includes(filter)
+                )
+            default:
+                return list
+        }
     }
+})
+
+export const managerList = atom<IStudent[]>({
+    /* A state to managers data */
+    key: 'managerList',
+    default: []
+})
+
+export const managerListFilterState = atom({
+    /* A state to set the filter value to use in filteredManagerList*/
+    key: 'managerListFilter',
+    default: ''
+})
+
+export const filteredManagerList = selector({
+    /* A selector to choose when use the complete list or filtered list
+       with all rules to apply in the manager filtered list.*/
+    key: 'filteredManagerList',
+    get: ({get}) => {
+        const filter = get(managerListFilterState).trim();
+        const list = get(managerList);
+
+        switch (filter) {
+            case filter:
+                return list.filter((item) =>
+                    item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter) ||
+                    item.name.includes(filter)
+                )
+            default:
+                return list
+        }
     }
 })

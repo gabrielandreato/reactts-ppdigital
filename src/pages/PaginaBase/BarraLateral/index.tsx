@@ -12,6 +12,7 @@ const BarraLateral = () => {
                     <Link to={'cursos'}>Cursos</Link>
                     <Link to={'alunos'}>Alunos</Link>
                     <Link to={'matriculas'}>Matriculas</Link>
+                    <Link to={'gestores'}>Gestores</Link>
                 </ul>
             </div>
         </div>

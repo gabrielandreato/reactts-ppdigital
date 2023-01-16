@@ -1,0 +1,17 @@
+.Select {
+    width: 100%;
+    padding: 0.8rem 0;
+    text-align: center;
+    font-size: 1.6rem;
+    border-radius: 2rem;
+    border: var(--minerva-color-azul-200) solid .1rem ;
+}
+
+
+.Select option {
+    background: var(--font-color-white);
+}
+
+#selecione-padrao {
+    display: none;
+}

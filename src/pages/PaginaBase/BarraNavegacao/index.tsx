@@ -1,13 +1,24 @@
 import styles from './BarraNavegacao.module.css'
-import logo from './assets/logo_minerva.png'
-import {Courses} from "../../Courses";
-import { Link } from "react-router-dom";
+import {useCleanToken} from "../../../state/hooks/authentication";
+import {Navigate, redirect, useNavigate} from "react-router-dom";
 
 const BarraNavegacao = () => {
-    return(
+
+    const navigate = useNavigate()
+
+    const removeToken = useCleanToken;
+    const logout = () => {
+        removeToken();
+        navigate('/')
+
+    }
+
+    return (
         <nav className={styles.BarraNavegacao}>
             <ul className={styles.opcoes}>
-                <li><Link to={'courses'}>Logout</Link></li>
+                <li>
+                    <button onClick={() => logout()}>Logout</button>
+                </li>
             </ul>
         </nav>
     )

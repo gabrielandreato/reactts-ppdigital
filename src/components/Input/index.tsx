@@ -1,11 +1,17 @@
-import IInput from "../../interfaces/IInput";
 import './Input.module.css'
 
-export const Input = ({htmlFor, type, children}: IInput) => {
+interface props{
+    htmlFor: string,
+    type: string,
+    children: string,
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
+}
+
+export const Input = ({htmlFor, type, children, onChange}: props) => {
     return (
         <div>
             <label htmlFor={htmlFor}>{children}</label>
-            <input type={type} name={htmlFor} id={htmlFor}/>
+            <input onChange={onChange} type={type} name={htmlFor} id={htmlFor}/>
         </div>
     )
 }

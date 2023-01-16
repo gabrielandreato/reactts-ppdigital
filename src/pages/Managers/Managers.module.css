@@ -6,6 +6,7 @@
 }
 .Header {
     grid-area: h;
+
 }
 
 .Content {
@@ -15,10 +16,11 @@
     padding-top: 3rem;
 }
 
+
+
 .Footer {
     grid-area: f;
 }
-
 .Footer .Nav {
     display: flex;
 

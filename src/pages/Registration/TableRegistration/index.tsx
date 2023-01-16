@@ -16,9 +16,8 @@ export const TableRegistration = () => {
 
     useEffect(() => {
         http.get('matriculas/')
-            // .then(response => setRegistrationListValues(response.data))
-
-    })
+            .then(response => setRegistrationListValues(response.data))
+    }, [])
 
     return (
         <div className={styles.Content}>
@@ -38,9 +37,10 @@ export const TableRegistration = () => {
                     <tr className={styles.TableBodyValue} key={registration.id}>
                         <td className={styles.TableBodyValueId}>{registration.id}</td>
                         <td>{registration.course_name}</td>
+                        <td>{registration.student_name}</td>
                         {/*<td>{registration.data_final.getDate()}</td>*/}
                         <td>
-                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${registration.id}/`)}>Editar</BotaoNavBar>
+                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>Editar</BotaoNavBar>
                             <BotaoNavBar>Excluir</BotaoNavBar>
                         </td>
                     </tr>

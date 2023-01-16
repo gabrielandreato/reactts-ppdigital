@@ -6,7 +6,6 @@ import React, {useEffect, useState} from "react";
 import IStudent from "../../../interfaces/IStudent";
 import {http} from "../../../http";
 import {useNavigate} from "react-router-dom";
-import ReactPaginate from "react-paginate";
 
 
 export const TableStudents = () => {

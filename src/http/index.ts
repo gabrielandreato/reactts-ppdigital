@@ -1,10 +1,9 @@
 import axios from "axios";
+import {usegetToken} from "../state/hooks/authentication";
 
 export const http = axios.create({
-    baseURL: 'http://localhost:8000/',
-    // headers: {
-    //     Accept: 'application/json',
-    //     Content: 'application/json',
-        // Authorization: `Token ${sessionStorage.getItem('token')}`
-    // }
+    baseURL: 'http://127.0.0.1:8000/',
+    headers: {
+        Authorization: `token ${usegetToken()}`
+    }
 })
