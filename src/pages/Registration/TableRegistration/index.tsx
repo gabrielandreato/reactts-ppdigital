@@ -1,7 +1,7 @@
 import styles from "./TableRegistration.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {registrationList, filteredRegistrationList} from "../../../state/atom";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {filteredRegistrationList, registrationList} from "../../../state/atomRegistration";
 import {useEffect} from "react";
 import {http} from "../../../http";
 import IRegistration from "../../../interfaces/IRegistration";
@@ -17,7 +17,16 @@ export const TableRegistration = () => {
     useEffect(() => {
         http.get('matriculas/')
             .then(response => setRegistrationListValues(response.data))
-    }, [])
+    }, [setRegistrationListValues])
+
+        const deleteRegistration = (registration: IRegistration) => {
+
+        if (window.confirm(`Deseja realmente excluir a matricula de ${registration.course_name} para ${registration.student_name} ?`)) {
+            http.delete(`matriculas/${registration.id}/`)
+                .then(() => setRegistrationListValues(registrationListValues.filter(item => item.id !== registration.id)))
+                .catch(() => alert('Não foi possivel excluir esse curso para este cargo.'))
+        }
+    }
 
     return (
         <div className={styles.Content}>
@@ -41,7 +50,7 @@ export const TableRegistration = () => {
                         {/*<td>{registration.data_final.getDate()}</td>*/}
                         <td>
                             <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>Editar</BotaoNavBar>
-                            <BotaoNavBar>Excluir</BotaoNavBar>
+                            <BotaoNavBar onClick={() => deleteRegistration(registration)}>Excluir</BotaoNavBar>
                         </td>
                     </tr>
                 )

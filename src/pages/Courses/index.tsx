@@ -4,9 +4,7 @@ import {TableCourses} from "./TableCourses";
 import {SubNavBar} from "../../components/SubNavBar";
 import {useNavigate} from "react-router-dom";
 import {BotaoNavBar} from "../../components/BotaoNavBar";
-import {FilterStudent} from "../Students/FilterStudent";
 import {FilterCourses} from "./FilterCourses";
-import {usegetToken} from "../../state/hooks/authentication";
 
 export const Courses = () => {
 

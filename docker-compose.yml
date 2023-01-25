@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  react-pp-digital:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8005:8005"
+    volumes:
+      - "home/app/node_modules"
+      - "./:/home/app"

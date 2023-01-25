@@ -1,6 +1,6 @@
 import styles from "./FilterManagers.module.css";
 import {useRecoilState} from "recoil";
-import {managerListFilterState} from "../../../state/atom";
+import {managerListFilterState} from "../../../state/atomManager";
 
 
 export const FilterManagers = () => {

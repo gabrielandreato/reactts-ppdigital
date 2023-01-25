@@ -33,7 +33,7 @@ export const FormCourses = () => {
             http.post(`cursos/`, {name: courseName})
                 .then(() => alert('Curso cadastrado com sucesso'))
                 .then(() => navigate(`/pagina-principal/cursos`))
-                .catch(erro => alert('Houve um erro. Não foi possivel cadastrar um novo curso !'))
+                .catch(erro => alert('Houve um erro. Não foi possivel atualizar o curso !'))
         }
         setCourseName('')
     }

@@ -1,10 +1,10 @@
-import styles from "./FilterCourses.module.css";
+import styles from "./FilterCoursesByResponsability.module.css";
 import {useRecoilState} from "recoil";
-import {registrationListFilterState} from "../../../state/atomRegistration";
+import {coursesByResponsabilityListFilterState} from "../../../state/atomCourseByResponsability";
 
 
-export const FilterRegistration = () => {
-    const [filter, setFilter] = useRecoilState(registrationListFilterState)
+export const FilterCoursesByResponsability = () => {
+    const [filter, setFilter] = useRecoilState(coursesByResponsabilityListFilterState)
 
     const updateFilter = (value: string) => {
         setFilter(value);

@@ -1,7 +1,7 @@
 import styles from "./TableCourses.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {courseList, filteredCourseList} from "../../../state/atom";
+import {courseList, filteredCourseList} from "../../../state/atomCourse";
 import {useEffect} from "react";
 import {http} from "../../../http";
 import ICourses from "../../../interfaces/ICourses";
@@ -40,7 +40,6 @@ export const TableCourses = () => {
                         {/*<td>{course.data_final.getDate()}</td>*/}
                         <td>
                             <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>Editar</BotaoNavBar>
-                            <BotaoNavBar>Excluir</BotaoNavBar>
                         </td>
                     </tr>
                 )

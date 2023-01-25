@@ -23,15 +23,15 @@ export const FormManagers = () => {
         event.preventDefault();
 
         if (params.id) {
-            http.put(`gestores/${params.id}/`, {name: managerName})
+            http.patch(`gestores/${params.id}/`, {name: managerName})
                 .then(() => alert('Gestor atualizado com sucesso'))
-                .then(() => navigate(`/pagina-principal/gestor`))
+                .then(() => navigate(`/pagina-principal/gestores`))
                 .catch(erro => alert('Houve um erro. Não foi possivel cadastrar um novo gestor !'))
         } else {
-            http.post(`gestores/`, {name: managerName})
+            http.post(`gestores/`, {name: managerName, is_manager: true})
                 .then(() => alert('Gestor cadastrado com sucesso'))
-                .then(() => navigate(`/pagina-principal/gestor`))
-                .catch(erro => alert('Houve um erro. Não foi possivel cadastrar um novo gestor !'))
+                .then(() => navigate(`/pagina-principal/gestores`))
+                .catch(erro => alert('Houve um erro. Não foi possivel atualizar o gestor !'))
         }
         setManagerName('')
     }

@@ -1,7 +1,7 @@
 import styles from "./FilterStudent.module.css";
 import {useState} from "react";
 import {useRecoilState} from "recoil";
-import {studentListFilterState} from "../../../state/atom";
+import {studentListFilterState} from "../../../state/atomStudent";
 
 
 

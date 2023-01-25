@@ -1,7 +1,7 @@
 import styles from "./FilterCourses.module.css";
 import {useState} from "react";
 import {useRecoilState} from "recoil";
-import {courseListFilterState} from "../../../state/atom";
+import {courseListFilterState} from "../../../state/atomCourse";
 
 
 

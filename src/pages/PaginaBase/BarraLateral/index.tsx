@@ -8,11 +8,12 @@ const BarraLateral = () => {
             <img className={styles.LogoMinerva} src={logo} alt=""/>
             <div className={styles.Navigation}>
                 <ul className={styles.Section}>
-                    <Link to={'matriz-treinamentos'}>Matriz de Treinamentos</Link>
-                    <Link to={'cursos'}>Cursos</Link>
                     <Link to={'alunos'}>Alunos</Link>
-                    <Link to={'matriculas'}>Matriculas</Link>
                     <Link to={'gestores'}>Gestores</Link>
+                    <Link to={'cursos'}>Cursos</Link>
+                    <Link to={'matriculas'}>Matriculas</Link>
+                    <Link to={'curso-cargo'}>Cursos por Cargo</Link>
+                    <Link to={'matriz-treinamentos'}>Matriz de Treinamentos</Link>
                 </ul>
             </div>
         </div>

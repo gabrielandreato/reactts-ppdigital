@@ -8,9 +8,12 @@ import {FormStudent} from "../pages/Students/FormStudent";
 import {TrainingMatrix} from "../pages/TrainingMatrix";
 import {Registration} from "../pages/Registration";
 import {FormRegistration} from "../pages/Registration/FormRegistration";
-import {isAuthenticated} from "../state/hooks/authentication";
+import {useGetToken, useIsAuthenticated} from "../state/hooks/authentication";
 import {Manager} from "../pages/Managers";
 import {FormManagers} from "../pages/Managers/FormManagers";
+import {CoursesByResponsability} from "../pages/CoursesByResponsability";
+import {FormCoursesByResponsability} from "../pages/CoursesByResponsability/FormCoursesByResponsability";
+import FormLogin from "../pages/PaginaLogin/FormLogin";
 
 
 interface IProtectedRoute {
@@ -19,7 +22,7 @@ interface IProtectedRoute {
 
 const ProtectedRoute = ({children}: IProtectedRoute) => {
     let location = useLocation();
-    if (!isAuthenticated()) {
+    if (!useGetToken()) {
         return <Navigate to="/" state={{from: location}} replace/>
     }
     return (<>{children}</>)
@@ -44,6 +47,9 @@ const Rotas = () => {
                 <Route path={'gestores'} element={<Manager/>}/>
                 <Route path={'formulario-gestor'} element={<FormManagers/>}/>
                 <Route path={'formulario-gestor/:id'} element={<FormManagers/>}/>
+                <Route path={'curso-cargo'} element={<CoursesByResponsability/>}/>
+                <Route path={'formulario-curso-cargo'} element={<FormCoursesByResponsability/>}/>
+                <Route path={'formulario-curso-cargo/:id'} element={<FormCoursesByResponsability />}/>
             </Route>
 
 

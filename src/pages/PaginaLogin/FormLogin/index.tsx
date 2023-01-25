@@ -25,7 +25,7 @@ const FormLogin = () => {
                 setPassword('')
                 navigate('pagina-principal');
             })
-            .catch(erro => alert(erro))
+            .catch(erro => alert('Login ou senha incorretos, por favor, inclua credenciais validas.'))
     }
 
     return (<form className={styles.formWrapper} onSubmit={onFormSubmit} action="">

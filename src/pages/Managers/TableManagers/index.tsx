@@ -1,7 +1,7 @@
 import styles from "./TableManagers.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
-import {courseList, filteredCourseList} from "../../../state/atom";
+import {filteredManagerList, managerList} from "../../../state/atomManager";
 import {useEffect} from "react";
 import {http} from "../../../http";
 import IStudent from "../../../interfaces/IStudent";
@@ -9,8 +9,8 @@ import {useNavigate} from "react-router-dom";
 
 export const TableManagers = () => {
 
-    const managersListValues = useRecoilValue<IStudent[]>(filteredCourseList)
-    const setManagersListValues = useSetRecoilState<IStudent[]>(courseList)
+    const managersListValues = useRecoilValue<IStudent[]>(filteredManagerList)
+    const setManagersListValues = useSetRecoilState<IStudent[]>(managerList)
 
     const navigate = useNavigate();
 
