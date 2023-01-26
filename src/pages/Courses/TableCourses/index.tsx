@@ -2,17 +2,30 @@ import styles from "./TableCourses.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
 import {courseList, filteredCourseList} from "../../../state/atomCourse";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {http} from "../../../http";
 import ICourses from "../../../interfaces/ICourses";
 import {useNavigate} from "react-router-dom";
+import {Pagination} from "../../../components/Pagination/Pagination";
 
 export const TableCourses = () => {
 
-    const coursesListValues = useRecoilValue<ICourses[]>(filteredCourseList)
+    // States from Recoil
     const setCoursesListValues = useSetRecoilState<ICourses[]>(courseList)
+    const filteredCoursesListValues = useRecoilValue<ICourses[]>(filteredCourseList)
 
     const navigate = useNavigate();
+
+    // Pagination states
+    const [loading, setLoading] = useState<boolean>(false);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [coursesPerPage] = useState<number>(10);
+    // Pagination parameters
+    const indexOfLastCourse = currentPage * coursesPerPage
+    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage
+    const currentCourses = filteredCoursesListValues.slice(indexOfFirstCourse, indexOfLastCourse);
+    //Change Page
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
     useEffect(() => {
         http.get('cursos/')
@@ -32,7 +45,7 @@ export const TableCourses = () => {
 
             </thead>
             <tbody className={styles.TableBody}>
-            {coursesListValues.map(
+            {currentCourses.map(
                 course => (
                     <tr className={styles.TableBodyValue} key={course.id}>
                         <td className={styles.TableBodyValueId}>{course.id}</td>
@@ -46,11 +59,11 @@ export const TableCourses = () => {
             )}
             </tbody>
         </table>
-
-                <ul className={styles.TableFoot}>
-                    <li> Anterior</li>
-                    <li>Proxima</li>
-                </ul>
+        <Pagination
+            itemsPerPage={coursesPerPage}
+            totalItems={filteredCoursesListValues.length}
+            paginate={paginate}
+        />
         </div>
     )
 }

@@ -82,7 +82,7 @@ export const FormStudent = () => {
                             )
                         )}
                     </Dropdown>
-                <Botao>Cadastrar</Botao>
+                <Botao>Salvar</Botao>
             </form>
         </div>
         </div>

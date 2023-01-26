@@ -24,10 +24,8 @@ export const filteredRegistrationList = selector({
         switch (filter) {
             case filter:
                 return list.filter((item) =>
-                    item.student_name.toLowerCase().includes(filter) || item.student_name.toUpperCase().includes(filter) ||
-                    item.student_name.includes(filter) ||
-                    item.course_name.toLowerCase().includes(filter) || item.course_name.toUpperCase().includes(filter) ||
-                    item.course_name.includes(filter)
+                    item.student_name.toLowerCase().includes(filter.toLowerCase()) ||
+                    item.course_name.toLowerCase().includes(filter.toLowerCase())
                 )
             default:
                 return list

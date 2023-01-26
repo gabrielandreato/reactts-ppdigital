@@ -1,7 +1,7 @@
 import styles from "./TableStudents.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {studentList, filteredStudentList} from "../../../state/atomStudent";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {filteredStudentList, studentList} from "../../../state/atomStudent";
 import React, {useEffect, useState} from "react";
 import IStudent from "../../../interfaces/IStudent";
 import {http} from "../../../http";
@@ -11,34 +11,31 @@ import {Pagination} from "../../../components/Pagination/Pagination";
 
 export const TableStudents = () => {
 
-    // States for pagination
-
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
-
-
-    const setStudentListState = useSetRecoilState<IStudent[]>(studentList);
-    const filteredStudentListSelector = useRecoilValue(filteredStudentList)
+    // States from Recoil
+    const setStudentListValues = useSetRecoilState<IStudent[]>(studentList);
+    const studentListValues = useRecoilValue(filteredStudentList)
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        http.get('alunos/')
-            .then(response => {
-                setStudentListState(response.data)
-            })
-    }, [])
-
-    // Get current Post
-    const indexOfLastPost = currentPage * postsPerPage
-    const indexOfFirstPost = indexOfLastPost - postsPerPage
-    const currentStudents = filteredStudentListSelector.slice(indexOfFirstPost, indexOfLastPost);
-
+    // Pagination states
+    const [loading, setLoading] = useState<boolean>(false);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [studentsPerPage] = useState<number>(10);
+    // Pagination parameters
+    const indexOfLastStudent = currentPage * studentsPerPage
+    const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
+    const currentStudents = studentListValues.slice(indexOfFirstStudent, indexOfLastStudent);
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
+
+    // Loading data from API
+    useEffect(() => {
+        http.get('alunos/')
+            .then(response => {
+                setStudentListValues(response.data)
+            })
+    }, [])
 
     return (
         <div className={styles.Content}>
@@ -48,6 +45,7 @@ export const TableStudents = () => {
                 <tr className={styles.TableHeadValue}>
                     <th className={styles.TableHeadValueId}>ID</th>
                     <th>Aluno:</th>
+                    <th>Gestor:</th>
                     <th className={styles.TableHeadValueFunctions}>Funções</th>
                 </tr>
 
@@ -59,21 +57,22 @@ export const TableStudents = () => {
                         <tr className={styles.TableBodyValue} key={student.id}>
                             <td className={styles.TableBodyValueId}>{student.id}</td>
                             <td>{student.name}</td>
-                            {/*<td>{student.manager}</td>*/}
+                            <td>{student.supervisor}</td>
                             <td>
-                                <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}>Editar</BotaoNavBar>
+                                <BotaoNavBar
+                                    onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}
+                                >Editar</BotaoNavBar>
                                 <BotaoNavBar>Inativar</BotaoNavBar>
                             </td>
                         </tr>
-                )
-                )}
+                ))}
                 </tbody>
             </table>
-            {/*<ul className={styles.TableFoot}>*/}
-            {/*    <li> Anterior</li>*/}
-            {/*    <li>Proxima</li>*/}
-            {/*</ul>*/}
-            <Pagination itemsPerPage={postsPerPage} totalItems={filteredStudentListSelector.length} paginate={paginate} />
+            <Pagination
+                itemsPerPage={studentsPerPage}
+                totalItems={studentListValues.length}
+                paginate={paginate}
+            />
         </div>
     )
 }

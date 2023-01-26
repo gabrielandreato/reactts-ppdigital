@@ -1,7 +1,7 @@
 import styles from "./TableCoursesByResponsability.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {http} from "../../../http";
 import {useNavigate} from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
     filteredCoursesByResponsabilityList
 } from "../../../state/atomCourseByResponsability";
 import ICourseByResponsability from "../../../interfaces/ICourseByResponsability";
+import {Pagination} from "../../../components/Pagination/Pagination";
 
 export const TableCoursesByResponsability = () => {
 
@@ -16,6 +17,17 @@ export const TableCoursesByResponsability = () => {
     const setCoursesByResponsabilityListValues = useSetRecoilState<ICourseByResponsability[]>(coursesByResponsabilityList)
 
     const navigate = useNavigate();
+
+    // Pagination states
+    const [loading, setLoading] = useState<boolean>(false);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [coursesByResponsabilityPerPage] = useState<number>(10);
+    // Pagination parameters
+    const indexOfLastStudent = currentPage * coursesByResponsabilityPerPage
+    const indexOfFirstStudent = indexOfLastStudent - coursesByResponsabilityPerPage
+    const currentCoursesByResponsability = coursesByResponsabilityListValues.slice(indexOfFirstStudent, indexOfLastStudent);
+    //Change Page
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
     useEffect(() => {
         http.get('matriculas-cargo/')
@@ -44,7 +56,7 @@ export const TableCoursesByResponsability = () => {
 
             </thead>
             <tbody className={styles.TableBody}>
-            {coursesByResponsabilityListValues.map(
+            {currentCoursesByResponsability.map(
                 courseByResponsability => (
                     <tr className={styles.TableBodyValue} key={courseByResponsability.id}>
                         <td className={styles.TableBodyValueId}>{courseByResponsability.id}</td>
@@ -59,10 +71,11 @@ export const TableCoursesByResponsability = () => {
             )}
             </tbody>
         </table>
-                <ul className={styles.TableFoot}>
-                    <li> Anterior</li>
-                    <li>Proxima</li>
-                </ul>
+            <Pagination
+                itemsPerPage={coursesByResponsabilityPerPage}
+                totalItems={coursesByResponsabilityListValues.length}
+                paginate={paginate}
+            />
         </div>
     )
 }

@@ -16,16 +16,22 @@ export const Pagination = ({totalItems, itemsPerPage, paginate}: Props) => {
     }
 
     return (
-        <nav className={styles.NavBar}>
-            <ul className={styles.List}>
-                {pageNumbers.map(number => (
-                    <li className={styles.List} key={number}>
-                        <a className={styles.Link} onClick={() => paginate(number)} href='#'>
-                            {number}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+
+            <nav className={styles.NavBar}>
+                {pageNumbers.length !== 1 ?
+                <ul className={styles.List}>
+                    {pageNumbers.map(number => (
+                        <li className={styles.List} key={number}>
+                            <a className={styles.Link} onClick={() => paginate(number)} href='#'>
+                                {number}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                    :
+                <ul/>
+                }
+            </nav>
+
     )
 }

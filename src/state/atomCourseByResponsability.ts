@@ -24,10 +24,8 @@ export const filteredCoursesByResponsabilityList = selector({
         switch (filter) {
             case filter:
                 return list.filter((item) =>
-                    item.responsability_name.toLowerCase().includes(filter) || item.responsability_name.toUpperCase().includes(filter) ||
-                    item.responsability_name.includes(filter) ||
-                    item.course_name.toLowerCase().includes(filter) || item.course_name.toUpperCase().includes(filter) ||
-                    item.course_name.includes(filter)
+                    item.responsability_name.toLowerCase().includes(filter.toLowerCase()) ||
+                    item.course_name.toLowerCase().includes(filter.toLowerCase())
                 )
             default:
                 return list

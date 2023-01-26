@@ -24,7 +24,7 @@ export const filteredCourseList = selector({
         switch (filter) {
             case filter:
                 return list.filter((item) =>
-                    item.name.toLowerCase().includes(filter) || item.name.toUpperCase().includes(filter)
+                    item.name.toLowerCase().includes(filter.toLowerCase())
                 )
             default:
                 return list
