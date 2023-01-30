@@ -1,0 +1,53 @@
+.Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.BodyWrapper {
+    display: flex;
+    height: 40rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.BodyWrapper * {
+    margin: .8rem;
+    color: var(--font-color-white);
+}
+
+.Title {
+    color: var(--font-color-white);
+    font-size: 4.8rem;
+    font-weight: 700;
+}
+
+.SubTitle {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--font-color-grey-inative);
+}
+
+.Text {
+    font-size: 1.2rem;
+    color: var(--font-color-grey-inative);
+}
+
+.Link {
+    text-decoration: none;
+    font-size: 1.8rem;
+    border-radius: .8rem;
+    border: var(--font-color-white) solid .2rem;
+    transition: .5s;
+    width: 100%;
+    text-align: center;
+    padding: .8rem;
+}
+
+.Link:hover {
+    background: var(--minerva-color-azul-200);
+    transition: .5s;
+}

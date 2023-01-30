@@ -1,27 +1,25 @@
 .paginaBase {
     --menu-ativo: 8rem;
     display: grid;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     grid-template-rows: 8rem 1fr;
     grid-template-columns: 24rem 1fr ;
     grid-template-areas:
         "bl bn   bn"
         "bl cont cont"
-        "bl cont cont"
-        ;
-    transition: 0.5s;
+        "bl cont cont";
 }
 
 .barraNavegacao {
     grid-area: bn;
-
 }
 
 .barraLateral {
     grid-area: bl;
     cursor: pointer;
+    width: 100%;
 }
-
 
 .corpo {
     grid-area: cont;

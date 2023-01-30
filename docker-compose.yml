@@ -1,12 +1,32 @@
-version: "3.8"
+version: "3"
+
 services:
-  react-pp-digital:
-    stdin_open: true
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+  react_min_pp_digital:
+    container_name: react_min_pp_digital
+    image: react_min_pp_digital:1.0
+    build: .
+    command: npm start
     ports:
-      - "8005:8005"
+      - "4020:4020"
     volumes:
-      - "home/app/node_modules"
-      - "./:/home/app"
+      - static_volume:/home/react_app/
+    networks:
+      - disponibilidade_digital_postgres
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/react_app/
+    ports:
+      - "8020:73"
+    networks:
+      - disponibilidade_digital_postgres
+    depends_on:
+      - react_min_pp_digital
+
+volumes:
+  static_volume:
+
+networks:
+  disponibilidade_digital_postgres:
+    external: true

@@ -14,12 +14,15 @@ import {FormManagers} from "../pages/Managers/FormManagers";
 import {CoursesByResponsability} from "../pages/CoursesByResponsability";
 import {FormCoursesByResponsability} from "../pages/CoursesByResponsability/FormCoursesByResponsability";
 import FormLogin from "../pages/PaginaLogin/FormLogin";
+import {PageNotFound} from "../pages/PageNotFound";
 
 
 interface IProtectedRoute {
     children: React.ReactNode
 }
 
+/* A redirection for not logged users when they access any route.
+This route protect all aplication data.*/
 const ProtectedRoute = ({children}: IProtectedRoute) => {
     let location = useLocation();
     if (!useGetToken()) {
@@ -28,10 +31,20 @@ const ProtectedRoute = ({children}: IProtectedRoute) => {
     return (<>{children}</>)
 }
 
+/* A redirection for logged users whe they access the base route.
+This route is to prevent login page access when user is already logged in. */
+const StartRouteForLoggedUsers = ({children}: IProtectedRoute) => {
+    let location = useLocation();
+    if (useGetToken()) {
+        return <Navigate to="/pagina-principal" state={{from: location}} replace/>
+    }
+    return (<>{children}</>)
+}
+
 const Rotas = () => {
     return (
         <Routes>
-            <Route path='/' element={<PaginaLogin/>}/>
+            <Route path='/' element={<StartRouteForLoggedUsers><PaginaLogin/></StartRouteForLoggedUsers>}/>
             <Route path='/protegida' element={<ProtectedRoute><FormCourses/></ProtectedRoute>}/>
             <Route path='/pagina-principal' element={<ProtectedRoute><PaginaBase/></ProtectedRoute>}>
                 <Route path={'matriz-treinamentos'} element={<TrainingMatrix/>}/>
@@ -51,8 +64,7 @@ const Rotas = () => {
                 <Route path={'formulario-curso-cargo'} element={<FormCoursesByResponsability/>}/>
                 <Route path={'formulario-curso-cargo/:id'} element={<FormCoursesByResponsability />}/>
             </Route>
-
-
+            <Route path={'*'} element={<PageNotFound/>}/>
         </Routes>
     )
 }

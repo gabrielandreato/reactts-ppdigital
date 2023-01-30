@@ -19,8 +19,6 @@ export const Students = () => {
             <div className={styles.Content}>
                 <TableStudents/>
             </div>
-            <div className={styles.Footer}>
-            </div>
         </div>
     )
 }

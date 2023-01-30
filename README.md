@@ -1,14 +1,24 @@
-# Projeto para controle de cursos, alunos e matriculas.
+# 🌐 Escola Digital (Front end) - Projeto React com Typescript alimentado por uma API REST Django.
 
-Esse projeto foi desenvolvido em React com Typescript e Backend em Django Rest Framework.
-## Front End
-1. Estilização com Css, Grid e Flexbox.
+### 📚💻Técnologias e Conhecimentos aplicados:
+- Estilização com Css, Grid e Flexbox.
+- React
+- Typescript
+- Recoil
+- React-Router-Dom
+- NGINX
+- Docker
 
-## Back End
-1. Postgres
-2. Autenticação via Token.
-
-![](src/assets/docs/img_3.png)
-_logo omitido_
+### O projeto tem o intuito de cotrolar cursos, alunos, seus gestores, cargos e treinamentos.
+1. Pagina de login 
+   1. Rotas protegidas e direcionamento.
+   2. Persistencia de token através de SessionStorage
+   ![](src/assets/docs/img_3.png)
+   _logo omitido_
+2. Formulario de cadastro e edição. 
+   1. Busca de seleção suspensa através de API
 ![](src/assets/docs/img_1.png)
+3. Pagina para controle de registros.
+   1. Filtro com estado Global
+   2. Paginação.
 ![](src/assets/docs/img.png)

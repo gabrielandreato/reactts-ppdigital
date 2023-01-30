@@ -1,21 +1,21 @@
 import {atom, selector} from "recoil";
 import IStudent from "../interfaces/IStudent";
 
+/* A state to managers data */
 export const managerList = atom<IStudent[]>({
-    /* A state to managers data */
     key: 'managerList',
     default: []
 })
 
+/* A state to set the filter value to use in filteredManagerList*/
 export const managerListFilterState = atom({
-    /* A state to set the filter value to use in filteredManagerList*/
     key: 'managerListFilter',
     default: ''
 })
 
+/* A selector to choose when use the complete list or filtered list
+   with all rules to apply in the manager filtered list.*/
 export const filteredManagerList = selector({
-    /* A selector to choose when use the complete list or filtered list
-       with all rules to apply in the manager filtered list.*/
     key: 'filteredManagerList',
     get: ({get}) => {
         const filter = get(managerListFilterState).trim();

@@ -1,21 +1,21 @@
 import {atom, selector} from "recoil";
 import ICourses from "../interfaces/ICourses";
 
+/* A state to courses data */
 export const courseList = atom<ICourses[]>({
-    /* A state to courses data */
     key: 'courseList',
     default: []
 })
 
+/* A state to set the filter value to use in filteredCourseList*/
 export const courseListFilterState = atom({
-    /* A state to set the filter value to use in filteredCourseList*/
     key: 'courseListFilter',
     default: ''
 })
 
+/* A selector to choose when use the complete list or filtered list
+   with all rules to apply in the course filtered list.*/
 export const filteredCourseList = selector({
-    /* A selector to choose when use the complete list or filtered list
-       with all rules to apply in the course filtered list.*/
     key: 'filteredCourseList',
     get: ({get}) => {
         const filter = get(courseListFilterState).trim();

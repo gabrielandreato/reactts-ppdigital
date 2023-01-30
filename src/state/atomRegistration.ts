@@ -1,21 +1,21 @@
 import {atom, selector} from "recoil";
 import IRegistration from "../interfaces/IRegistration";
 
+/* A state to registrations data */
 export const registrationList = atom<IRegistration[]>({
-    /* A state to registrations data */
     key: 'registrationList',
     default: []
 })
 
+/* A state to set the filter value to use in filteredRegistrationList*/
 export const registrationListFilterState = atom({
-    /* A state to set the filter value to use in filteredRegistrationList*/
     key: 'registrationListFilter',
     default: ''
 })
 
+/* A selector to choose when use the complete list or filtered list
+   with all rules to apply in the registration filtered list.*/
 export const filteredRegistrationList = selector({
-    /* A selector to choose when use the complete list or filtered list
-       with all rules to apply in the registration filtered list.*/
     key: 'filteredRegistrationList',
     get: ({get}) => {
         const filter = get(registrationListFilterState).trim();

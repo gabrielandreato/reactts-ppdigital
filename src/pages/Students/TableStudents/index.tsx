@@ -46,6 +46,7 @@ export const TableStudents = () => {
                     <th className={styles.TableHeadValueId}>ID</th>
                     <th>Aluno:</th>
                     <th>Gestor:</th>
+                    <th>Cargo:</th>
                     <th className={styles.TableHeadValueFunctions}>Funções</th>
                 </tr>
 
@@ -57,7 +58,8 @@ export const TableStudents = () => {
                         <tr className={styles.TableBodyValue} key={student.id}>
                             <td className={styles.TableBodyValueId}>{student.id}</td>
                             <td>{student.name}</td>
-                            <td>{student.supervisor}</td>
+                            <td>{student.supervisor.name}</td>
+                            <td>{student.responsability.responsability}</td>
                             <td>
                                 <BotaoNavBar
                                     onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}
