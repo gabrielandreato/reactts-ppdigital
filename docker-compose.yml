@@ -11,7 +11,7 @@ services:
     volumes:
       - static_volume:/home/react_app/
     networks:
-      - disponibilidade_digital_postgres
+      - app_aposta_postgres
 
   nginx:
     build: ./nginx
@@ -20,7 +20,7 @@ services:
     ports:
       - "8020:73"
     networks:
-      - disponibilidade_digital_postgres
+      - app_aposta_postgres
     depends_on:
       - react_min_pp_digital
 
@@ -28,5 +28,5 @@ volumes:
   static_volume:
 
 networks:
-  disponibilidade_digital_postgres:
+  app_aposta_postgres:
     external: true
