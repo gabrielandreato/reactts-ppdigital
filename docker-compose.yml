@@ -18,7 +18,7 @@ services:
     volumes:
       - static_volume:/home/react_app/
     ports:
-      - "8020:73"
+      - "7020:73"
     networks:
       - app_aposta_postgres
     depends_on:
