@@ -4,8 +4,8 @@ import {useGetToken} from "../state/hooks/authentication";
 const token = useGetToken
 
 export const http = axios.create({
-    baseURL: 'http://191.101.15.157:8010/',
-    // baseURL: 'http://127.0.0.1:8010/', // Dev url
+    baseURL: 'http://191.101.15.157:7010/',
+    // baseURL: 'http://127.0.0.1:7010/', // Dev url
 })
 
 http.interceptors.request.use((config:AxiosRequestConfig | any) => {
