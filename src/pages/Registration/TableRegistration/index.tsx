@@ -3,7 +3,7 @@ import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {filteredRegistrationList, registrationList} from "../../../state/atomRegistration";
 import React, {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import IRegistration from "../../../interfaces/IRegistration";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "../../../components/Pagination/Pagination";
@@ -16,7 +16,6 @@ export const TableRegistration = () => {
     const navigate = useNavigate();
 
     // Pagination states
-    const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [registrationsPerPage] = useState<number>(10);
     // Pagination parameters

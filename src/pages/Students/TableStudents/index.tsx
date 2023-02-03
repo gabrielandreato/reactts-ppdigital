@@ -4,7 +4,7 @@ import {useRecoilValue, useSetRecoilState} from "recoil";
 import {filteredStudentList, studentList} from "../../../state/atomStudent";
 import React, {useEffect, useState} from "react";
 import IStudent from "../../../interfaces/IStudent";
-import {http} from "../../../http";
+import http from "../../../http";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "../../../components/Pagination/Pagination";
 
@@ -18,7 +18,6 @@ export const TableStudents = () => {
     const navigate = useNavigate();
 
     // Pagination states
-    const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [studentsPerPage] = useState<number>(10);
     // Pagination parameters

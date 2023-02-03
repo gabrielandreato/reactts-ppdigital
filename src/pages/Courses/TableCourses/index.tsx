@@ -1,12 +1,13 @@
 import styles from "./TableCourses.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilValue, useSetRecoilState} from "recoil";
 import {courseList, filteredCourseList} from "../../../state/atomCourse";
 import React, {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import ICourses from "../../../interfaces/ICourses";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "../../../components/Pagination/Pagination";
+
 
 export const TableCourses = () => {
 
@@ -17,13 +18,13 @@ export const TableCourses = () => {
     const navigate = useNavigate();
 
     // Pagination states
-    const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [coursesPerPage] = useState<number>(10);
     // Pagination parameters
     const indexOfLastCourse = currentPage * coursesPerPage
     const indexOfFirstCourse = indexOfLastCourse - coursesPerPage
     const currentCourses = filteredCoursesListValues.slice(indexOfFirstCourse, indexOfLastCourse);
+
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -32,6 +33,7 @@ export const TableCourses = () => {
             .then(response => setCoursesListValues(response.data))
 
     }, [])
+
 
     return (
         <div className={styles.Content}>
