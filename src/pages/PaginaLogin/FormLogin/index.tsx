@@ -5,7 +5,7 @@ import Botao from "../../../components/Botao";
 import {Link, useNavigate} from "react-router-dom";
 import logoMinerva from '../../../assets/login/logo_minerva_foods.png'
 import {FormEvent, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import {usePersistToken} from "../../../state/hooks/authentication";
 
 const FormLogin = () => {

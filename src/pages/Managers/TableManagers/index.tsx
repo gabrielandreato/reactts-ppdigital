@@ -3,7 +3,7 @@ import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {filteredManagerList, managerList} from "../../../state/atomManager";
 import React, {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import IStudent from "../../../interfaces/IStudent";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "../../../components/Pagination/Pagination";
@@ -17,7 +17,6 @@ export const TableManagers = () => {
     const navigate = useNavigate();
 
     // Pagination states
-    const [loading, setLoading] = useState<boolean>(false)
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [managersPerPage] = useState<number>(10)
     // Pagination parameters

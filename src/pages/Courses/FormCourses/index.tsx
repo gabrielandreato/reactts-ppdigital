@@ -1,11 +1,10 @@
-import Input from "../../../components/Input";
 import styles from "./FormCourses.module.css"
 import Botao from "../../../components/Botao";
 import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 
 export const FormCourses = () => {
     const navigate = useNavigate();
@@ -53,7 +52,6 @@ export const FormCourses = () => {
                        value={courseName}
                        name="courseName"
                        type="text"/>
-                {/*<Input htmlFor='final-date' type='date'>Data final:</Input>*/}
                 <Botao>Salvar</Botao>
             </form>
         </div>

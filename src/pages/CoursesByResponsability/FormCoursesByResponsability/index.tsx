@@ -4,7 +4,7 @@ import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import {Dropdown} from "../../../components/Dropdown";
 import ICourses from "../../../interfaces/ICourses";
 import IResponsability from "../../../interfaces/IResponsability";

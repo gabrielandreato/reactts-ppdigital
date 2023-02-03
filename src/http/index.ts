@@ -1,12 +1,12 @@
-import axios, {AxiosRequestConfig} from "axios";
 import {useGetToken} from "../state/hooks/authentication";
+import axios, {AxiosRequestConfig} from "axios";
 
 const token = useGetToken
 
-export const http = axios.create({
+const http = axios.create({
     baseURL: 'http://191.101.15.157:7010/',
-    // baseURL: 'http://127.0.0.1:7010/', // Dev url
-})
+    // baseURL: 'http://127.0.0.1:8000/', // Dev url
+});
 
 http.interceptors.request.use((config:AxiosRequestConfig | any) => {
     // Do something before request is sent
@@ -20,3 +20,5 @@ http.interceptors.request.use((config:AxiosRequestConfig | any) => {
     console.log('Erro no interceptor do axios.')
     return Promise.reject(error);
 });
+
+export default http;

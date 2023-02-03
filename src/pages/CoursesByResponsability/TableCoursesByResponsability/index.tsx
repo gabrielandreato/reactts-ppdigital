@@ -2,7 +2,7 @@ import styles from "./TableCoursesByResponsability.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import React, {useEffect, useState} from "react";
-import {http} from "../../../http";
+import http from "../../../http";
 import {useNavigate} from "react-router-dom";
 import {
     coursesByResponsabilityList,
@@ -19,7 +19,6 @@ export const TableCoursesByResponsability = () => {
     const navigate = useNavigate();
 
     // Pagination states
-    const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [coursesByResponsabilityPerPage] = useState<number>(10);
     // Pagination parameters
