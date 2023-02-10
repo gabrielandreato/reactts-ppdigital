@@ -20,6 +20,7 @@ export const FormStudent = () => {
     const params = useParams();
 
     const studentNameRef = useRef<HTMLInputElement | null>(null)
+    const buttonRef = useRef<HTMLInputElement | null>(null)
 
     // Input states
     const [studentName, setStudentName] = useState('');
@@ -43,7 +44,6 @@ export const FormStudent = () => {
         }
     }, [params])
 
-    console.log(studentName, studentManager, studentResponsability)
     useEffect(() => {
         http.get('gestores/')
             .then(response => setManagerNameList(response.data))
@@ -120,9 +120,11 @@ export const FormStudent = () => {
                             ))}
                     </Dropdown>
                     <label htmlFor="subarea">Sub Area:</label>
-                    <Dropdown name="subarea" id="subarea" value={studentSubArea} onChange={event => {
-                        setStudentSubArea(event.target.value)
-                    }}>
+                    <Dropdown name="subarea"
+                              id="subarea"
+                              value={studentSubArea}
+                              onChange={event => {setStudentSubArea(event.target.value)}}
+                    >
                         <option id="selecione-padrao">Selecione uma sub area...</option>
                         {subAreaNameList.map(subarea => (
                             <option key={subarea.id} value={subarea.id}>{subarea.subarea}</option>

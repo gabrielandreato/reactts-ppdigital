@@ -24,6 +24,10 @@ export const TableStudents = () => {
     const indexOfLastStudent = currentPage * studentsPerPage
     const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
     const currentStudents = studentListValues.slice(indexOfFirstStudent, indexOfLastStudent);
+
+    // conditional to prevent unhide data when the state has been filtered and pagination in use
+    const filteredPaginatedList = studentListValues.length < studentsPerPage ? studentListValues : currentStudents
+
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -51,8 +55,7 @@ export const TableStudents = () => {
 
                 </thead>
                 <tbody className={styles.TableBody}>
-                {currentStudents &&
-                    currentStudents.map(
+                {filteredPaginatedList.map(
                     student => (
                         <tr className={styles.TableBodyValue} key={student.id}>
                             <td className={styles.TableBodyValueId}>{student.id}</td>

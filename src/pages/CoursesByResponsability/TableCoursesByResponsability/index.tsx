@@ -28,6 +28,10 @@ export const TableCoursesByResponsability = () => {
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
+    // conditional to prevent unhide data when the state has been filtered and pagination in use
+    const filteredPaginatedList = coursesByResponsabilityListValues.length < coursesByResponsabilityPerPage ?
+        coursesByResponsabilityListValues : currentCoursesByResponsability
+
     useEffect(() => {
         http.get('matriculas-cargo/')
             .then(response => setCoursesByResponsabilityListValues(response.data))
@@ -44,32 +48,34 @@ export const TableCoursesByResponsability = () => {
     //.then(() => setRegistrationListValues(registrationListValues.filter(item => item.id !== registration.id)))
     return (
         <div className={styles.Content}>
-        <table className={styles.Table}>
-            <thead className={styles.TableHead}>
-            <tr className={styles.TableHeadValue}>
-                <th className={styles.TableHeadValueId}>ID</th>
-                <th>Nome do Cargo</th>
-                <th>Nome do Curso</th>
-                <th className={styles.TableHeadValueFunctions}>Funções</th>
-            </tr>
+            <table className={styles.Table}>
+                <thead className={styles.TableHead}>
+                <tr className={styles.TableHeadValue}>
+                    <th className={styles.TableHeadValueId}>ID</th>
+                    <th>Nome do Cargo</th>
+                    <th>Nome do Curso</th>
+                    <th className={styles.TableHeadValueFunctions}>Funções</th>
+                </tr>
 
-            </thead>
-            <tbody className={styles.TableBody}>
-            {currentCoursesByResponsability.map(
-                courseByResponsability => (
-                    <tr className={styles.TableBodyValue} key={courseByResponsability.id}>
-                        <td className={styles.TableBodyValueId}>{courseByResponsability.id}</td>
-                        <td>{courseByResponsability.responsability_name}</td>
-                        <td>{courseByResponsability.course_name}</td>
-                        <td>
-                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso-cargo/${courseByResponsability.id}/`)}>Editar</BotaoNavBar>
-                            <BotaoNavBar onClick={() => deleteCourseByResponsability(courseByResponsability)}>Excluir</BotaoNavBar>
-                        </td>
-                    </tr>
-                )
-            )}
-            </tbody>
-        </table>
+                </thead>
+                <tbody className={styles.TableBody}>
+                {filteredPaginatedList.map(
+                    courseByResponsability => (
+                        <tr className={styles.TableBodyValue} key={courseByResponsability.id}>
+                            <td className={styles.TableBodyValueId}>{courseByResponsability.id}</td>
+                            <td>{courseByResponsability.responsability_name}</td>
+                            <td>{courseByResponsability.course_name}</td>
+                            <td>
+                                <BotaoNavBar
+                                    onClick={() => navigate(`/pagina-principal/formulario-curso-cargo/${courseByResponsability.id}/`)}>Editar</BotaoNavBar>
+                                <BotaoNavBar
+                                    onClick={() => deleteCourseByResponsability(courseByResponsability)}>Excluir</BotaoNavBar>
+                            </td>
+                        </tr>
+                    )
+                )}
+                </tbody>
+            </table>
             <Pagination
                 itemsPerPage={coursesByResponsabilityPerPage}
                 totalItems={coursesByResponsabilityListValues.length}

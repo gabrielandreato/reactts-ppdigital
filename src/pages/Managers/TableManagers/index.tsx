@@ -12,7 +12,7 @@ export const TableManagers = () => {
 
     // States from Recoil
     const setManagersListValues = useSetRecoilState<IStudent[]>(managerList)
-    const filteredManagersListValues = useRecoilValue<IStudent[]>(filteredManagerList)
+    const managersListValues = useRecoilValue<IStudent[]>(filteredManagerList)
 
     const navigate = useNavigate();
 
@@ -22,8 +22,11 @@ export const TableManagers = () => {
     // Pagination parameters
     const indexOfLastManager = currentPage * managersPerPage
     const indexOfFirstManager = indexOfLastManager - managersPerPage
-    const currentManagers = filteredManagersListValues.slice(indexOfFirstManager, indexOfLastManager)
+    const currentManagers = managersListValues.slice(indexOfFirstManager, indexOfLastManager)
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
+
+    // conditional to prevent unhide data when the state has been filtered and pagination in use
+    const filteredPaginatedList = managersListValues.length < managersPerPage ? managersListValues : currentManagers
 
     // Loading data from API
     useEffect(() => {
@@ -40,16 +43,18 @@ export const TableManagers = () => {
             <tr className={styles.TableHeadValue}>
                 <th className={styles.TableHeadValueId}>ID</th>
                 <th>Nome do Gestor</th>
+                <th>Cargo</th>
                 <th className={styles.TableHeadValueFunctions}>Funções</th>
             </tr>
 
             </thead>
             <tbody className={styles.TableBody}>
-            {currentManagers.map(
+            {filteredPaginatedList.map(
                 manager => (
                     <tr className={styles.TableBodyValue} key={manager.id}>
                         <td className={styles.TableBodyValueId}>{manager.id}</td>
                         <td>{manager.name}</td>
+                        <td>{manager.responsability.responsability}</td>
                         <td>
                             <BotaoNavBar
                                 onClick={() => navigate(`/pagina-principal/formulario-gestor/${manager.id}/`)}
@@ -63,7 +68,7 @@ export const TableManagers = () => {
         </table>
             <Pagination
                 itemsPerPage={managersPerPage}
-                totalItems={filteredManagersListValues.length}
+                totalItems={managersListValues.length}
                 paginate={paginate}
             />
         </div>

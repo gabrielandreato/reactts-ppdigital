@@ -1,4 +1,5 @@
 import IResponsability from "./IResponsability";
+import ISubArea from "./ISubArea";
 
 export default interface IStudent {
     id: number,
@@ -6,4 +7,5 @@ export default interface IStudent {
     is_manager: boolean,
     supervisor: IStudent,
     responsability: IResponsability,
+    subarea: ISubArea
 }

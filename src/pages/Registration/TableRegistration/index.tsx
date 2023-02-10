@@ -22,6 +22,10 @@ export const TableRegistration = () => {
     const indexOfLastRegistration = currentPage * registrationsPerPage
     const indexOfFirstRegistration = indexOfLastRegistration - registrationsPerPage
     const currentRegistrations = registrationListValues.slice(indexOfFirstRegistration, indexOfLastRegistration);
+
+    // conditional to prevent unhide data when the state has been filtered and pagination in use
+    const filteredPaginatedList = registrationListValues.length < registrationsPerPage ? registrationListValues : registrationListValues
+
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -52,7 +56,7 @@ export const TableRegistration = () => {
 
                 </thead>
                 <tbody className={styles.TableBody}>
-                {currentRegistrations.map(
+                {filteredPaginatedList.map(
                     registration => (
                         <tr className={styles.TableBodyValue} key={registration.id}>
                             <td className={styles.TableBodyValueId}>{registration.id}</td>

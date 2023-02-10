@@ -13,7 +13,7 @@ const BarraLateral = () => {
                     <Link to={'cursos'}>Cursos</Link>
                     <Link to={'matriculas'}>Matriculas</Link>
                     <Link to={'curso-cargo'}>Cursos por Cargo</Link>
-                    <Link to={'matriz-treinamentos'}>Matriz de Treinamentos</Link>
+                    {/*<Link to={'matriz-treinamentos'}>Matriz de Treinamentos</Link>*/}
                 </ul>
             </div>
         </div>
