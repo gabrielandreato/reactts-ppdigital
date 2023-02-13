@@ -1,6 +1,6 @@
 import styles from "./TableStudents.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
 import {filteredStudentList, studentList} from "../../../state/atomStudent";
 import React, {useEffect, useState} from "react";
 import IStudent from "../../../interfaces/IStudent";
@@ -12,8 +12,8 @@ import {Pagination} from "../../../components/Pagination/Pagination";
 export const TableStudents = () => {
 
     // States from Recoil
-    const setStudentListValues = useSetRecoilState<IStudent[]>(studentList);
-    const studentListValues = useRecoilValue(filteredStudentList)
+    const [studentListValues, setStudentListValues] = useRecoilState<IStudent[]>(studentList);
+    const filteredstudentListValues = useRecoilValue(filteredStudentList)
 
     const navigate = useNavigate();
 
@@ -23,10 +23,10 @@ export const TableStudents = () => {
     // Pagination parameters
     const indexOfLastStudent = currentPage * studentsPerPage
     const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
-    const currentStudents = studentListValues.slice(indexOfFirstStudent, indexOfLastStudent);
+    const currentStudents = filteredstudentListValues.slice(indexOfFirstStudent, indexOfLastStudent);
 
     // Conditional to prevent unhide data when the state has been filtered and pagination in use
-    const filteredPaginatedList = studentListValues.length < studentsPerPage ? studentListValues : currentStudents
+    const filteredPaginatedList = filteredstudentListValues.length < studentsPerPage ? filteredstudentListValues : currentStudents
 
     // Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
@@ -62,6 +62,7 @@ export const TableStudents = () => {
                     <th>Aluno:</th>
                     <th>Gestor:</th>
                     <th>Cargo:</th>
+                    <th>Sub Area:</th>
                     <th className={styles.TableHeadValueFunctions}>Funções</th>
                 </tr>
 
@@ -74,6 +75,7 @@ export const TableStudents = () => {
                             <td>{student.name}</td>
                             <td>{student.supervisor.name}</td>
                             <td>{student.responsability.responsability}</td>
+                            <td>{student.subarea.subarea}</td>
                             <td>
                                 <BotaoNavBar
                                     onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}
@@ -86,7 +88,7 @@ export const TableStudents = () => {
             </table>
             <Pagination
                 itemsPerPage={studentsPerPage}
-                totalItems={studentListValues.length}
+                totalItems={filteredstudentListValues.length}
                 paginate={paginate}
             />
         </div>

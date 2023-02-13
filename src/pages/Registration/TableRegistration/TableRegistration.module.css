@@ -1,11 +1,13 @@
 .Content {
     align-self: center;
     width: 90%;
+    max-width: 100%;
 
 }
 
 .Table {
     width: 100%;
+
 }
 
 .Table table, th, td{

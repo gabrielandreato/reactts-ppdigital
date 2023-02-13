@@ -24,7 +24,8 @@ export const TableRegistration = () => {
     const currentRegistrations = registrationListValues.slice(indexOfFirstRegistration, indexOfLastRegistration);
 
     // conditional to prevent unhide data when the state has been filtered and pagination in use
-    const filteredPaginatedList = registrationListValues.length < registrationsPerPage ? registrationListValues : registrationListValues
+    const filteredPaginatedList = registrationListValues.length < registrationsPerPage ? registrationListValues : currentRegistrations
+
 
     //Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)

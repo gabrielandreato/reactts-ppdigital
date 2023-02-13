@@ -39,7 +39,7 @@ export const FormStudent = () => {
                     setStudentName(response.data.name)
                     setStudentManager(response.data.supervisor.id)
                     setStudentResponsability(response.data.responsability.id)
-                    setStudentSubArea(response.data.subarea)
+                    setStudentSubArea(response.data.subarea.id)
                 })
         }
     }, [params])
@@ -47,14 +47,8 @@ export const FormStudent = () => {
     useEffect(() => {
         http.get('gestores/')
             .then(response => setManagerNameList(response.data))
-    }, [])
-
-    useEffect(() => {
         http.get('cargos/')
             .then(response => setResponsabilityNameList(response.data))
-    }, [])
-
-    useEffect(() => {
         http.get('subareas/')
             .then(response => setSubAreaNameList(response.data))
     }, [])

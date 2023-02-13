@@ -26,7 +26,8 @@ export const filteredStudentList = selector({
                 return list.filter((item) =>
                 item.name.toLowerCase().includes(filter.toLowerCase()) ||
                 item.supervisor.name.toLowerCase().includes(filter.toLowerCase()) ||
-                item.responsability.responsability.toLowerCase().includes(filter.toLowerCase())
+                item.responsability.responsability.toLowerCase().includes(filter.toLowerCase()) ||
+                item.subarea.subarea.toLowerCase().includes(filter.toLowerCase())
                 )
             default:
                 return list

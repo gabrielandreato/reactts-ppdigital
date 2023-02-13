@@ -1,6 +1,6 @@
 import styles from "./TableManagers.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {filteredManagerList, managerList} from "../../../state/atomManager";
 import React, {useEffect, useState} from "react";
 import http from "../../../http";
@@ -11,8 +11,8 @@ import {Pagination} from "../../../components/Pagination/Pagination";
 export const TableManagers = () => {
 
     // States from Recoil
-    const setManagersListValues = useSetRecoilState<IStudent[]>(managerList)
-    const managersListValues = useRecoilValue<IStudent[]>(filteredManagerList)
+    const [managerListValues, setManagersListValues] = useRecoilState<IStudent[]>(managerList)
+    const filteredmanagersListValues = useRecoilValue<IStudent[]>(filteredManagerList)
 
     const navigate = useNavigate();
 
@@ -22,11 +22,11 @@ export const TableManagers = () => {
     // Pagination parameters
     const indexOfLastManager = currentPage * managersPerPage
     const indexOfFirstManager = indexOfLastManager - managersPerPage
-    const currentManagers = managersListValues.slice(indexOfFirstManager, indexOfLastManager)
+    const currentManagers = filteredmanagersListValues.slice(indexOfFirstManager, indexOfLastManager)
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
     // conditional to prevent unhide data when the state has been filtered and pagination in use
-    const filteredPaginatedList = managersListValues.length < managersPerPage ? managersListValues : currentManagers
+    const filteredPaginatedList = filteredmanagersListValues.length < managersPerPage ? filteredmanagersListValues : currentManagers
 
     // Loading data from API
     useEffect(() => {
@@ -39,7 +39,7 @@ export const TableManagers = () => {
             http.patch(`/gestores/${id}/`, {is_active: false})
                 .then(() => alert(`Gestor inativado com sucesso!`))
                 .then(() => filteredPaginatedList.filter(item => item.id !== id))
-                .then(() => setManagersListValues(managersListValues.filter(item => item.id !== id)))
+                .then(() => setManagersListValues(managerListValues.filter(item => item.id !== id)))
                 .catch(() => alert(`Houve algum problema ao inativar esse aluno`)
             )
         }
@@ -79,7 +79,7 @@ export const TableManagers = () => {
         </table>
             <Pagination
                 itemsPerPage={managersPerPage}
-                totalItems={managersListValues.length}
+                totalItems={filteredmanagersListValues.length}
                 paginate={paginate}
             />
         </div>

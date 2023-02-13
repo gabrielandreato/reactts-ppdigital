@@ -38,7 +38,6 @@ const FormLogin = () => {
                type={'password'}>Senha</Input>
         <hr/>
         <Botao>Acessar</Botao>
-        <Link to={'/pagina-principal'}>Cadastre-se</Link>
     </form>)
 }
 export default FormLogin
