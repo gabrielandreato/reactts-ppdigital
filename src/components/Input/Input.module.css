@@ -17,5 +17,4 @@ input {
 
 input:focus {
     outline: var(--minerva-color-azul-200) solid .1rem;
-
 }

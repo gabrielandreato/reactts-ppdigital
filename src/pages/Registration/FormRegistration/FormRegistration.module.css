@@ -22,3 +22,16 @@
 .Form button {
     margin-top: 2.4rem
 }
+
+.InputCheckbox {
+    display: grid;
+    grid-template-columns: 5% auto;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.InputCheckbox label {
+    padding-left: .4rem;
+}
+
+

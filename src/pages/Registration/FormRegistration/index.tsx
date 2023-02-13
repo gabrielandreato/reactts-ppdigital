@@ -3,16 +3,17 @@ import Botao from "../../../components/Botao";
 import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {ReactEventHandler, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import http from "../../../http";
 import {Dropdown} from "../../../components/Dropdown";
 import IStudent from "../../../interfaces/IStudent";
 import ICourses from "../../../interfaces/ICourses";
 import {useRecoilState} from "recoil";
 import {studentList} from "../../../state/atomStudent";
-import {courseList } from "../../../state/atomCourse";
+import {courseList} from "../../../state/atomCourse";
 import IOrigin from "../../../interfaces/IOrigin";
 import {originList} from "../../../state/atomOrigin";
+import {InputCheckbox} from "../../../components/InputCheckbox";
 
 export const FormRegistration = () => {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ export const FormRegistration = () => {
     const [studentName, setStudentName] = useState('');
     const [courseName, setCourseName] = useState('');
     const [originName, setOriginName] = useState<string>('');
+    const [courseRequired, setCourseRequired] = useState<boolean>(true);
 
     const [studentNameList, setStudentNameList] = useRecoilState<IStudent[]>(studentList);
     const [courseNameList, setCourseNameList] = useRecoilState<ICourses[]>(courseList);
@@ -48,6 +50,7 @@ export const FormRegistration = () => {
                     } else {
                         return ''
                     }
+                    setCourseRequired(response.data.is_required)
 
                 })
         }
@@ -58,7 +61,8 @@ export const FormRegistration = () => {
         const data = {
             course_name: courseName,
             student_name: studentName,
-            origin: originName
+            origin: originName,
+            is_required: courseRequired
         }
         if (params.id) {
             http.put(`cadastrar-matricula/${params.id}/`, data)
@@ -118,6 +122,13 @@ export const FormRegistration = () => {
                         >{origin.name}</option>
                     ))}
                 </Dropdown>
+
+
+                <InputCheckbox htmlFor="courseRequired"
+                               type="checkbox"
+                               checked={courseRequired}
+                               onChange={event => setCourseRequired(event.target.checked)
+                               }>Curso obrigatório ?</InputCheckbox>
                 <Botao>Salvar</Botao>
             </form>
         </div>

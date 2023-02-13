@@ -3,7 +3,7 @@ import Botao from "../../../components/Botao";
 import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import http from "../../../http";
 import {Dropdown} from "../../../components/Dropdown";
 import ICourses from "../../../interfaces/ICourses";
@@ -11,6 +11,7 @@ import IResponsability from "../../../interfaces/IResponsability";
 import {useRecoilState} from "recoil";
 import {courseList} from "../../../state/atomCourse";
 import {responsabilityList} from "../../../state/atomResponsability";
+import {InputCheckbox} from "../../../components/InputCheckbox";
 
 export const FormCoursesByResponsability = () => {
     const navigate = useNavigate();
@@ -18,8 +19,10 @@ export const FormCoursesByResponsability = () => {
     const params = useParams();
 
     const [responsabilityName, setResponsabilityName] = useState('');
-    const [responsabilityNameList, setResponsabilityNameList] = useRecoilState<IResponsability[]>(responsabilityList);
     const [courseName, setCourseName] = useState('');
+    const [courseRequired, setCourseRequired] = useState<boolean>(true)
+
+    const [responsabilityNameList, setResponsabilityNameList] = useRecoilState<IResponsability[]>(responsabilityList);
     const [courseNameList, setCourseNameList] = useRecoilState<ICourses[]>(courseList);
 
 
@@ -27,12 +30,9 @@ export const FormCoursesByResponsability = () => {
         http.get('cargos/')
             .then(response => {
                 setResponsabilityNameList(response.data)
-            })
-    }, [])
-
-    useEffect(() => {
         http.get('cursos/')
             .then(response => setCourseNameList(response.data))
+            })
     }, [])
 
     useEffect(() => {
@@ -41,6 +41,7 @@ export const FormCoursesByResponsability = () => {
                 .then(response => {
                     setCourseName(response.data.course_name_id)
                     setResponsabilityName(response.data.responsability_name_id)
+                    setCourseRequired(response.data.is_required)
                 })
         }
     }, [params])
@@ -48,13 +49,18 @@ export const FormCoursesByResponsability = () => {
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        const data = {
+            course_name: courseName,
+            responsability_name: responsabilityName,
+            is_required: courseRequired
+        }
         if (params.id) {
-            http.put(`cadastrar-matricula-cargo/${params.id}/`, {course_name: courseName, responsability_name: responsabilityName})
+            http.put(`cadastrar-matricula-cargo/${params.id}/`, data)
                 .then(() => alert('Curso para este cargo foi atualizado com sucesso'))
                 .then(() => navigate(`/pagina-principal/curso-cargo`))
                 .catch(erro => alert('Houve um erro. Não foi possivel atualizar a curso para este cargo !'))
         } else {
-            http.post(`cadastrar-matricula-cargo/`, {course_name: courseName, responsability_name: responsabilityName})
+            http.post(`cadastrar-matricula-cargo/`, data)
                 .then(() => alert('Curso para este cargo cadastrada com sucesso'))
                 .then(() => navigate(`/pagina-principal/curso-cargo`))
                 .catch(erro => alert('Houve um erro. Não foi possivel cadastrar uma nova curso para este cargo !'))
@@ -93,6 +99,11 @@ export const FormCoursesByResponsability = () => {
                             )
                         )}
                     </Dropdown>
+                    <InputCheckbox htmlFor="courseRequired"
+                       type="checkbox"
+                       checked={courseRequired}
+                       onChange={event => setCourseRequired(event.target.checked)}
+                    >Curso obrigatório ?</InputCheckbox>
                 <Botao>Salvar</Botao>
             </form>
         </div>
