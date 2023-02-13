@@ -20,7 +20,7 @@ export const TableCoursesByResponsability = () => {
 
     // Pagination states
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [coursesByResponsabilityPerPage] = useState<number>(10);
+    const [coursesByResponsabilityPerPage] = useState<number>(20);
     // Pagination parameters
     const indexOfLastStudent = currentPage * coursesByResponsabilityPerPage
     const indexOfFirstStudent = indexOfLastStudent - coursesByResponsabilityPerPage

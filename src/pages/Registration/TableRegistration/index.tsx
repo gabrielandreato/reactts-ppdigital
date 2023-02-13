@@ -17,7 +17,7 @@ export const TableRegistration = () => {
 
     // Pagination states
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [registrationsPerPage] = useState<number>(10);
+    const [registrationsPerPage] = useState<number>(20);
     // Pagination parameters
     const indexOfLastRegistration = currentPage * registrationsPerPage
     const indexOfFirstRegistration = indexOfLastRegistration - registrationsPerPage

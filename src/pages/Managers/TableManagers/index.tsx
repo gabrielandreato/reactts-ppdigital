@@ -18,7 +18,7 @@ export const TableManagers = () => {
 
     // Pagination states
     const [currentPage, setCurrentPage] = useState<number>(1)
-    const [managersPerPage] = useState<number>(10)
+    const [managersPerPage] = useState<number>(20)
     // Pagination parameters
     const indexOfLastManager = currentPage * managersPerPage
     const indexOfFirstManager = indexOfLastManager - managersPerPage
@@ -33,6 +33,17 @@ export const TableManagers = () => {
         http.get('gestores/')
             .then(response => setManagersListValues(response.data))
     }, [])
+
+    const inativaManager = (id: number) => {
+        if (window.confirm('Deseja realmente inativar esse gestor ?')) {
+            http.patch(`/gestores/${id}/`, {is_active: false})
+                .then(() => alert(`Gestor inativado com sucesso!`))
+                .then(() => filteredPaginatedList.filter(item => item.id !== id))
+                .then(() => setManagersListValues(managersListValues.filter(item => item.id !== id)))
+                .catch(() => alert(`Houve algum problema ao inativar esse aluno`)
+            )
+        }
+    }
 
 
 
@@ -59,7 +70,7 @@ export const TableManagers = () => {
                             <BotaoNavBar
                                 onClick={() => navigate(`/pagina-principal/formulario-gestor/${manager.id}/`)}
                             >Editar</BotaoNavBar>
-                            <BotaoNavBar>Inativar</BotaoNavBar>
+                            <BotaoNavBar onClick={() => inativaManager(manager.id)}>Inativar</BotaoNavBar>
                         </td>
                     </tr>
                 )
