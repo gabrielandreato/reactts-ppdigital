@@ -13,6 +13,7 @@ import {responsabilityList} from "../../../state/atomResponsability";
 import IResponsability from "../../../interfaces/IResponsability";
 import ISubArea from "../../../interfaces/ISubArea";
 import {subAreaList} from "../../../state/atomSubArea";
+import {studentList} from "../../../state/atomStudent";
 
 export const FormStudent = () => {
     const navigate = useNavigate();
@@ -31,6 +32,7 @@ export const FormStudent = () => {
     const [managerNameList, setManagerNameList] = useRecoilState<IStudent[]>(managerList);
     const [responsabilityNameList, setResponsabilityNameList] = useRecoilState<IResponsability[]>(responsabilityList);
     const [subAreaNameList, setSubAreaNameList] = useRecoilState<ISubArea[]>(subAreaList);
+    const [studentRecoilList, setStudentRecoilList] = useRecoilState<IStudent[]>(studentList);
 
     useEffect(() => {
         if (params.id) {
@@ -51,6 +53,8 @@ export const FormStudent = () => {
             .then(response => setResponsabilityNameList(response.data))
         http.get('subareas/')
             .then(response => setSubAreaNameList(response.data))
+        http.get('alunos/')
+            .then(response => setStudentRecoilList(response.data))
     }, [])
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -67,9 +71,14 @@ export const FormStudent = () => {
                 .then(() => navigate('/pagina-principal/alunos'))
                 .catch(erro => alert('Houve um erro. Não foi possivel atualizar o aluno !'))
         } else {
+            if (studentRecoilList.filter(student => student.name === studentName).length === 0) {
             http.post('alunos/', data)
                 .then(() => alert('Aluno cadastrado com sucesso !'))
                 .catch(erro => alert('Houve um erro. Não foi possivel cadastrar um novo aluno !'))
+            } else
+            {
+                alert(`Já existe um aluno ativo cadastrado com o nome ${studentName}!`)
+            }
         }
         setStudentName('')
         setStudentManager('')
@@ -88,6 +97,7 @@ export const FormStudent = () => {
                 <form className={styles.Form} onSubmit={onFormSubmit}>
                     <label htmlFor="">Nome do Aluno:</label>
                     <input
+                        minLength={10}
                         ref={studentNameRef}
                         type="text"
                         onChange={event => setStudentName(event.target.value)}
