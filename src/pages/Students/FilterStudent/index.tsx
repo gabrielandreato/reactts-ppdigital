@@ -1,4 +1,4 @@
-import styles from "./FilterStudent.module.css";
+import styles from "../../../components/Filter/Filter.module.css";
 import {useState} from "react";
 import {useRecoilState} from "recoil";
 import {studentListFilterState} from "../../../state/atomStudent";

@@ -1,4 +1,4 @@
-import styles from "./TableCoursesByResponsability.module.css";
+import styles from "../../../components/Table/Table.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import React, {useEffect, useState} from "react";
@@ -48,13 +48,14 @@ export const TableCoursesByResponsability = () => {
     //.then(() => setRegistrationListValues(registrationListValues.filter(item => item.id !== registration.id)))
     return (
         <div className={styles.Content}>
+            <div className={styles.ContentWrapper}>
             <table className={styles.Table}>
                 <thead className={styles.TableHead}>
                 <tr className={styles.TableHeadValue}>
                     <th className={styles.TableHeadValueId}>ID</th>
                     <th>Nome do Cargo</th>
                     <th>Nome do Curso</th>
-                    <th className={styles.TableHeadValueFunctions}>Funções</th>
+                    <th className={styles.TableHeadValueFunctions}>Ações</th>
                 </tr>
 
                 </thead>
@@ -82,5 +83,7 @@ export const TableCoursesByResponsability = () => {
                 paginate={paginate}
             />
         </div>
+            </div>
+            
     )
 }

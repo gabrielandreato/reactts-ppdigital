@@ -1,17 +1,174 @@
 @import url('../../root.css');
 
-body {
-    background-color: var(--minerva-color-azul-400);
-}
-
-.formLogin {
-    display: grid;
-    margin: auto;
+.login__bg {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
     height: 100vh;
-    place-items: center;
+    width: 100vw;
+    z-index: -99;
 }
 
-.corpoForm {
-    width: 40rem;
-    max-width: 100%;
+.main__title {
+    color: var(--font-color-grey);
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 1.8rem 0;
 }
+
+.login__bg_red {
+    height: 45%;
+    width: 100%;
+    background: var(--minerva-color-red-500);
+}
+.login__bg_light_blue {
+    height: 8rem;
+    width: 100%;
+    background: var(--minerva-color-azul-200);
+}
+.login__bg_blue {
+    height: calc(55% - 8rem);
+    width: 100%;
+    background: var(--minerva-color-azul-400);
+}
+
+
+.login__main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    position: fixed;
+}
+
+.login__wrapper {
+    display: grid;
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.login__container{
+    height: 50rem;
+}
+
+.login__container_art {
+    width: 40rem;
+}
+
+.login__logo {
+    height: 12rem;
+    margin: 2.4rem 3.2rem;
+
+}
+
+.login__logo_mobile {
+    position: absolute;
+    max-width: 100vw;
+    height: 8rem;
+    margin: 0;
+    bottom: 105%;
+    display: none;
+}
+
+.login__ham_art {
+    width: 100%;
+    padding: 3.2rem 0;
+}
+
+@media screen and (max-width: 50rem) {
+    .login__container_art {
+     display: none;
+    }
+    .login__logo_mobile {
+        display: block;
+    }
+
+
+}
+
+.login__container_form {
+    padding: 0 2.4rem;
+    background: var(--primary-color);
+    border-radius: .4rem;
+    width: 40rem;
+    max-width: 80vw;
+    position: relative;
+    /* min-width: 30rem; */
+}
+
+.login__form_description {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login__dux_logo {
+    display: block;
+    height: 4rem;
+    margin: 2.4rem 0;
+}
+
+.login__form_line {
+    width: 100%;
+    color: var(--font-color-grey);
+}
+
+.login__form_paragraph {
+    width: 23rem;
+    font-size: 1.4rem;
+    color: var(--font-color-grey);
+    text-align: center;
+    max-width: 100vw;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login__form_body {
+    display: flex;
+    flex-direction: column;
+    padding: 3.6rem 1.2rem;
+}
+
+.login__label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: .8rem 0;
+    color: var(--font-color-grey)
+}
+
+.login__input {
+    width: 100%;
+    margin-bottom: 2.4rem;
+    font-size: 1.2rem;
+    padding: .8rem 1.4rem;
+    border-radius: .4rem;
+    border: .1rem var(--font-color-grey-inative) solid;
+    color: var(--font-color-grey)
+}
+
+.login__input:hover {
+    border: .1rem var(--font-color-grey) solid !important;
+    transition: .5s;
+}
+
+.btn_red_login {
+    background: var(--minerva-color-red-500);
+    font-size: 1.4rem;
+    padding: 1.2rem;
+    color: var(--font-color-white);
+    text-decoration: none;
+    border-radius: .4rem;
+    border: none;
+    width: 9rem;
+    align-self: center;
+}
+

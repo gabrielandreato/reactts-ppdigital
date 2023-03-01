@@ -15,7 +15,7 @@ export const CoursesByResponsability = () => {
             <div className={styles.Header}>
             <SubNavBar>
                 <li><p>Controle de Curso Por Cargo</p></li>
-                <li className={styles.NavFunctions}><FilterCoursesByResponsability /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-curso-cargo')}>Novo Curso</BotaoNavBar></li>
+                <li className={styles.NavFunctions}><FilterCoursesByResponsability /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-curso-cargo')}>Cadastrar Curso</BotaoNavBar></li>
             </SubNavBar>
             </div>
             <div className={styles.Content}>

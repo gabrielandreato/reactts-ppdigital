@@ -1,4 +1,4 @@
-import styles from "./FilterCourses.module.css";
+import styles from "../../../components/Filter/Filter.module.css";
 import {useRecoilState} from "recoil";
 import {courseListFilterState} from "../../../state/atomCourse";
 

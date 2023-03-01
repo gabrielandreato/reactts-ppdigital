@@ -1,20 +1,26 @@
 .Content {
     align-self: center;
-    width: 90%;
+    width: 95%;
+}
 
+.ContentWrapper {
+    background: var(--bg-white);
+    padding: 2.4rem;
 }
 
 .Table {
     width: 100%;
+    color: var(--font-color-grey);
 }
 
-.Table table, th, td{
-    border: var(--font-color-white) solid .1rem;
+.Table table, td{
+    border: var(--table-body-border) solid .1rem;
 }
 
 .TableHead {
-    font-size: 1.6rem;
-    color: var(--font-color-white);
+    font-size: 1.4rem;
+    background: var(--table-header);
+    color: var(--table-header-font);
     font-weight: 700;
 }
 
@@ -22,7 +28,6 @@
     align-items: center;
     height: 3.2rem;
     vertical-align: middle;
-    background: var(--minerva-color-azul-700);
 }
 
 .TableHeadValueId{
@@ -35,17 +40,15 @@
 
 
 .TableBody {
-    font-size: 1.6rem;
-    color: var(--font-color-white);
+    font-size: 1.4rem;
     align-items: center;
 }
 
-.TableBody tr {
-    transition: .3s;
+.TableBodyValue:nth-child(odd){
+    background: var(--table-body-bg-nth-child);
 }
 
-.TableBody tr:hover {
-    background: var(--minerva-color-azul-200);
+.TableBody tr {
     transition: .3s;
 }
 
@@ -54,10 +57,9 @@
     height: 2.4rem;
     vertical-align: middle;
 }
-.TableBodyValue td:hover{
-    text-align: center;
-    height: 2.4rem;
-    vertical-align: middle;
+
+.TableBodyValue button:hover{
+    color: var(--font-color-grey);
 }
 
 
@@ -79,17 +81,16 @@
     text-decoration: none;
     list-style: none;
     padding: 1.2rem;
-
 }
 
 .TableFoot li{
-
     color: var(--font-color-grey-inative);
     text-decoration: none;
     cursor: pointer;
 }
+
 .TableFoot li:hover{
-    color: var(--font-color-white);
+    color: var(--font-color-grey);
     text-decoration: none;
     cursor: pointer;
 }

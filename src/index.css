@@ -58,19 +58,13 @@ button {
   color: inherit;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
   margin: 0;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f6f6;
 }
 
-body * {
-    font-family: 'Roboto', sans-serif;
-}
 
 ul {
   padding: 0;

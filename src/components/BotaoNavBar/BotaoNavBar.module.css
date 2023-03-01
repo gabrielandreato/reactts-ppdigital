@@ -9,6 +9,6 @@
 .BotaoNavBar:hover {
     cursor: pointer;
     transition: .5s;
-    background: var(--minerva-color-azul-200);
-    color: var(--font-color-white);
+    
+    color: var(--font-color-grey);
 }

@@ -6,14 +6,12 @@
 }
 .Header {
     grid-area: h;
-    background-color: var(--minerva-color-azul-700);
 }
 
 .Content {
     grid-area: t;
     display: flex;
     flex-direction: column;
-    padding-top: 3rem;
 }
 
 .NavFunctions {

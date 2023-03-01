@@ -15,7 +15,7 @@ export const Manager = () => {
             <div className={styles.Header}>
             <SubNavBar>
                 <li><p>Controle de Gestores</p></li>
-                <li className={styles.NavFunctions}><FilterManagers /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-gestor')}>Novo Gestor</BotaoNavBar></li>
+                <li className={styles.NavFunctions}><FilterManagers /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-gestor')}>Cadastrar Gestor</BotaoNavBar></li>
             </SubNavBar>
             </div>
             <div className={styles.Content}>

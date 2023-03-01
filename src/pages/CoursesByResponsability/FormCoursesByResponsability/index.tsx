@@ -1,4 +1,4 @@
-import styles from "./FormCoursesByResponsability.module.css"
+import styles from "../../../components/Form/Form.module.css"
 import Botao from "../../../components/Botao";
 import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";
@@ -20,7 +20,7 @@ export const FormCoursesByResponsability = () => {
 
     const [responsabilityName, setResponsabilityName] = useState('');
     const [courseName, setCourseName] = useState('');
-    const [courseRequired, setCourseRequired] = useState<boolean>(true)
+    const [courseRequired, setCourseRequired] = useState<boolean>(true);
 
     const [responsabilityNameList, setResponsabilityNameList] = useRecoilState<IResponsability[]>(responsabilityList);
     const [courseNameList, setCourseNameList] = useRecoilState<ICourses[]>(courseList);
@@ -28,12 +28,12 @@ export const FormCoursesByResponsability = () => {
 
     useEffect(() => {
         http.get('cargos/')
-            .then(response => {
-                setResponsabilityNameList(response.data)
+            .then(response => setResponsabilityNameList(response.data))
         http.get('cursos/')
             .then(response => setCourseNameList(response.data))
-            })
+            
     }, [])
+
 
     useEffect(() => {
         if (params.id){

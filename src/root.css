@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 :root {
+  --bg-white: #ffffff;
+  --bg-grey: #f1f3fa;
+
+  --bg-subnavbar: #f1f3fa;
+
   --primary-color: #F6F6F6;
   --button-primary-color: #bf404d;
   --font-color-black: #000000;
   --font-color-white: #F6F6F6;
   --font-color-grey-inative: #A9A9A9;
+  --font-color-grey: #666e74;
 
   --minerva-color-red-200: #eb7580;
   --minerva-color-red-500: #e84752;
@@ -16,6 +28,19 @@
   --minerva-color-azul-200: #385461;
   --minerva-color-azul-400: #2b3d4a;
   --minerva-color-azul-700: #24303b;
+
+  --topbar-submenu-border: #f1f3fa;
+
+  --table-header: #dadeec;
+  --table-header-font: #2a333e; 
+  --table-body-border: #f1f3fa ;
+  --table-body-bg-nth-child: #f0f2f9;
+
+
+  --form-border-grey: #A9A9A9;
+  --form-border-focus-grey: #888888;
+
+
 
   font-size: 62.5%;
 

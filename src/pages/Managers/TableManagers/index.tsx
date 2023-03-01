@@ -1,12 +1,13 @@
-import styles from "./TableManagers.module.css";
-import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilState, useRecoilValue} from "recoil";
-import {filteredManagerList, managerList} from "../../../state/atomManager";
-import React, {useEffect, useState} from "react";
+import styles from "../../../components/Table/Table.module.css";
+
+import { BotaoNavBar } from "../../../components/BotaoNavBar";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { filteredManagerList, managerList } from "../../../state/atomManager";
+import React, { useEffect, useState } from "react";
 import http from "../../../http";
 import IStudent from "../../../interfaces/IStudent";
-import {useNavigate} from "react-router-dom";
-import {Pagination} from "../../../components/Pagination/Pagination";
+import { useNavigate } from "react-router-dom";
+import { Pagination } from "../../../components/Pagination/Pagination";
 
 export const TableManagers = () => {
 
@@ -36,12 +37,12 @@ export const TableManagers = () => {
 
     const inativaManager = (id: number) => {
         if (window.confirm('Deseja realmente inativar esse gestor ?')) {
-            http.patch(`/gestores/${id}/`, {is_active: false})
+            http.patch(`/gestores/${id}/`, { is_active: false })
                 .then(() => alert(`Gestor inativado com sucesso!`))
                 .then(() => filteredPaginatedList.filter(item => item.id !== id))
                 .then(() => setManagersListValues(managerListValues.filter(item => item.id !== id)))
                 .catch(() => alert(`Houve algum problema ao inativar esse aluno`)
-            )
+                )
         }
     }
 
@@ -49,39 +50,42 @@ export const TableManagers = () => {
 
     return (
         <div className={styles.Content}>
-        <table className={styles.Table}>
-            <thead className={styles.TableHead}>
-            <tr className={styles.TableHeadValue}>
-                <th className={styles.TableHeadValueId}>ID</th>
-                <th>Nome do Gestor</th>
-                <th>Cargo</th>
-                <th className={styles.TableHeadValueFunctions}>Funções</th>
-            </tr>
+            <div className={styles.ContentWrapper}>
+                <table className={styles.Table}>
+                    <thead className={styles.TableHead}>
+                        <tr className={styles.TableHeadValue}>
+                            <th className={styles.TableHeadValueId}>ID</th>
+                            <th>Nome do Gestor</th>
+                            <th>Cargo</th>
+                            <th className={styles.TableHeadValueFunctions}>Ações</th>
+                        </tr>
 
-            </thead>
-            <tbody className={styles.TableBody}>
-            {filteredPaginatedList.map(
-                manager => (
-                    <tr className={styles.TableBodyValue} key={manager.id}>
-                        <td className={styles.TableBodyValueId}>{manager.id}</td>
-                        <td>{manager.name}</td>
-                        <td>{manager.responsability.responsability}</td>
-                        <td>
-                            <BotaoNavBar
-                                onClick={() => navigate(`/pagina-principal/formulario-gestor/${manager.id}/`)}
-                            >Editar</BotaoNavBar>
-                            <BotaoNavBar onClick={() => inativaManager(manager.id)}>Inativar</BotaoNavBar>
-                        </td>
-                    </tr>
-                )
-            )}
-            </tbody>
-        </table>
-            <Pagination
-                itemsPerPage={managersPerPage}
-                totalItems={filteredmanagersListValues.length}
-                paginate={paginate}
-            />
+                    </thead>
+                    <tbody className={styles.TableBody}>
+                        {filteredPaginatedList.map(
+                            manager => (
+                                <tr className={styles.TableBodyValue} key={manager.id}>
+                                    <td className={styles.TableBodyValueId}>{manager.id}</td>
+                                    <td>{manager.name}</td>
+                                    <td>{manager.responsability.responsability}</td>
+                                    <td>
+                                        <BotaoNavBar
+                                            onClick={() => navigate(`/pagina-principal/formulario-gestor/${manager.id}/`)}
+                                        >Editar</BotaoNavBar>
+                                        <BotaoNavBar onClick={() => inativaManager(manager.id)}>Inativar</BotaoNavBar>
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                    </tbody>
+                </table>
+                <Pagination
+                    itemsPerPage={managersPerPage}
+                    totalItems={filteredmanagersListValues.length}
+                    paginate={paginate}
+                />
+            </div>
         </div>
+
     )
 }

@@ -1,12 +1,12 @@
-import styles from "./TableRegistration.module.css";
-import {BotaoNavBar} from "../../../components/BotaoNavBar";
-import {useRecoilValue, useSetRecoilState} from "recoil";
-import {filteredRegistrationList, registrationList} from "../../../state/atomRegistration";
-import React, {useEffect, useState} from "react";
+import styles from "../../../components/Table/Table.module.css";
+import { BotaoNavBar } from "../../../components/BotaoNavBar";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { filteredRegistrationList, registrationList } from "../../../state/atomRegistration";
+import React, { useEffect, useState } from "react";
 import http from "../../../http";
 import IRegistration from "../../../interfaces/IRegistration";
-import {useNavigate} from "react-router-dom";
-import {Pagination} from "../../../components/Pagination/Pagination";
+import { useNavigate } from "react-router-dom";
+import { Pagination } from "../../../components/Pagination/Pagination";
 
 export const TableRegistration = () => {
 
@@ -46,38 +46,40 @@ export const TableRegistration = () => {
 
     return (
         <div className={styles.Content}>
-            <table className={styles.Table}>
-                <thead className={styles.TableHead}>
-                <tr className={styles.TableHeadValue}>
-                    <th className={styles.TableHeadValueId}>ID</th>
-                    <th>Curso</th>
-                    <th>Aluno</th>
-                    <th className={styles.TableHeadValueFunctions}>Funções</th>
-                </tr>
-
-                </thead>
-                <tbody className={styles.TableBody}>
-                {filteredPaginatedList.map(
-                    registration => (
-                        <tr className={styles.TableBodyValue} key={registration.id}>
-                            <td className={styles.TableBodyValueId}>{registration.id}</td>
-                            <td>{registration.course_name}</td>
-                            <td>{registration.student_name}</td>
-                            <td>
-                                <BotaoNavBar
-                                    onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>Editar</BotaoNavBar>
-                                <BotaoNavBar onClick={() => deleteRegistration(registration)}>Excluir</BotaoNavBar>
-                            </td>
+            <div className={styles.ContentWrapper}>
+                <table className={styles.Table}>
+                    <thead className={styles.TableHead}>
+                        <tr className={styles.TableHeadValue}>
+                            <th className={styles.TableHeadValueId}>ID</th>
+                            <th>Curso</th>
+                            <th>Aluno</th>
+                            <th className={styles.TableHeadValueFunctions}>Ações</th>
                         </tr>
-                    )
-                )}
-                </tbody>
-            </table>
-            <Pagination
-                itemsPerPage={registrationsPerPage}
-                totalItems={registrationListValues.length}
-                paginate={paginate}
-            />
+
+                    </thead>
+                    <tbody className={styles.TableBody}>
+                        {filteredPaginatedList.map(
+                            registration => (
+                                <tr className={styles.TableBodyValue} key={registration.id}>
+                                    <td className={styles.TableBodyValueId}>{registration.id}</td>
+                                    <td>{registration.course_name}</td>
+                                    <td>{registration.student_name}</td>
+                                    <td>
+                                        <BotaoNavBar
+                                            onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>Editar</BotaoNavBar>
+                                        <BotaoNavBar onClick={() => deleteRegistration(registration)}>Excluir</BotaoNavBar>
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                    </tbody>
+                </table>
+                <Pagination
+                    itemsPerPage={registrationsPerPage}
+                    totalItems={registrationListValues.length}
+                    paginate={paginate}
+                />
+            </div>
         </div>
     )
 }

@@ -2,12 +2,22 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: var(--minerva-color-azul-700);
+    background-color: var(--minerva-color-red-500);
 }
 
 .LogoMinerva {
-    padding: .8rem;
     width: 80%;
+    height: 1.8rem;
+    margin: 2.4rem auto;
+}
+
+.Title {
+    color: var(--font-color-white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 1.2rem .4rem 1.2rem 1.4rem;
 }
 
 .Section {
@@ -28,11 +38,10 @@
 }
 
 .Section *:hover {
-    background-color: var(--minerva-color-azul-400);
+    background-color: var(--minerva-color-red-700);
 }
 
 @media screen and  (max-width: 450px){
     .Section{
         display: none;}
 }
-

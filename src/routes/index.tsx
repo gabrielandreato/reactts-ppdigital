@@ -5,15 +5,13 @@ import {Courses} from "../pages/Courses";
 import {Students} from "../pages/Students";
 import {FormCourses} from "../pages/Courses/FormCourses";
 import {FormStudent} from "../pages/Students/FormStudent";
-import {TrainingMatrix} from "../pages/TrainingMatrix";
 import {Registration} from "../pages/Registration";
 import {FormRegistration} from "../pages/Registration/FormRegistration";
-import {useGetToken, useIsAuthenticated} from "../state/hooks/authentication";
+import {useGetToken} from "../state/hooks/authentication";
 import {Manager} from "../pages/Managers";
 import {FormManagers} from "../pages/Managers/FormManagers";
 import {CoursesByResponsability} from "../pages/CoursesByResponsability";
 import {FormCoursesByResponsability} from "../pages/CoursesByResponsability/FormCoursesByResponsability";
-import FormLogin from "../pages/PaginaLogin/FormLogin";
 import {PageNotFound} from "../pages/PageNotFound";
 
 
@@ -47,7 +45,6 @@ const Rotas = () => {
             <Route path='/' element={<StartRouteForLoggedUsers><PaginaLogin/></StartRouteForLoggedUsers>}/>
             <Route path='/protegida' element={<ProtectedRoute><FormCourses/></ProtectedRoute>}/>
             <Route path='/pagina-principal' element={<ProtectedRoute><PaginaBase/></ProtectedRoute>}>
-                <Route path={'matriz-treinamentos'} element={<TrainingMatrix/>}/>
                 <Route path={'cursos'} element={<Courses/>}/>
                 <Route path={'formulario-curso'} element={<FormCourses/>}/>
                 <Route path={'formulario-curso/:id'} element={<FormCourses/>}/>

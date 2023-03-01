@@ -13,7 +13,7 @@ export const Students = () => {
             <div className={styles.Header}>
         <SubNavBar>
             <li><p>Controle de Alunos</p></li>
-            <li className={styles.NavFunctions}><FilterStudent /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-aluno')}>Novo Aluno</BotaoNavBar></li>
+            <li className={styles.NavFunctions}><FilterStudent /><BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-aluno')}>Cadastrar Aluno</BotaoNavBar></li>
         </SubNavBar>
             </div>
             <div className={styles.Content}>

@@ -1,4 +1,4 @@
-import styles from "./TableCourses.module.css";
+import styles from "../../../components/Table/Table.module.css";
 import {BotaoNavBar} from "../../../components/BotaoNavBar";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {courseList, filteredCourseList} from "../../../state/atomCourse";
@@ -47,38 +47,41 @@ export const TableCourses = () => {
 
     return (
         <div className={styles.Content}>
-        <table className={styles.Table}>
-            <thead className={styles.TableHead}>
-            <tr className={styles.TableHeadValue}>
-                <th className={styles.TableHeadValueId}>ID</th>
-                <th>Nome do Curso</th>
-                <th className={styles.TableHeadValueId}>ID Kaptiva</th>
-                <th>Prazo Final</th>
-                <th className={styles.TableHeadValueFunctions}>Funções</th>
-            </tr>
+            <div className={styles.ContentWrapper}>
+            <table className={styles.Table}>
+                <thead className={styles.TableHead}>
+                <tr className={styles.TableHeadValue}>
+                    <th className={styles.TableHeadValueId}>ID</th>
+                    <th>Nome do Curso</th>
+                    <th className={styles.TableHeadValueId}>ID Kaptiva</th>
+                    <th>Prazo Final</th>
+                    <th className={styles.TableHeadValueFunctions}>Ações</th>
+                </tr>
 
-            </thead>
-            <tbody className={styles.TableBody}>
-            {filteredPaginatedList.map(
-                course => (
-                    <tr className={styles.TableBodyValue} key={course.id}>
-                        <td className={styles.TableBodyValueId}>{course.id}</td>
-                        <td>{course.name}</td>
-                        <td>{course.id_kaptiva}</td>
-                        <td>{dateFormat(course.due_date.toString())}</td>
-                        <td>
-                            <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>Editar</BotaoNavBar>
-                        </td>
-                    </tr>
-                )
-            )}
-            </tbody>
-        </table>
-        <Pagination
-            itemsPerPage={coursesPerPage}
-            totalItems={coursesListValues.length}
-            paginate={paginate}
-        />
+                </thead>
+                <tbody className={styles.TableBody}>
+                {filteredPaginatedList.map(
+                    course => (
+                        <tr className={styles.TableBodyValue} key={course.id}>
+                            <td className={styles.TableBodyValueId}>{course.id}</td>
+                            <td>{course.name}</td>
+                            <td>{course.id_kaptiva}</td>
+                            <td>{dateFormat(course.due_date.toString())}</td>
+                            <td>
+                                <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>Editar</BotaoNavBar>
+                            </td>
+                        </tr>
+                    )
+                )}
+                </tbody>
+            </table>
+            <Pagination
+                itemsPerPage={coursesPerPage}
+                totalItems={coursesListValues.length}
+                paginate={paginate}
+            />
+            </div>
         </div>
+        
     )
 }

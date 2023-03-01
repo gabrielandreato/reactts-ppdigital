@@ -1,13 +1,14 @@
 .Header {
-    background-color: var(--minerva-color-azul-700);
-    height: 6rem;
+    background-color: var(--bg-subnavbar);
+    height: 100%;
+    border-bottom: 1px solid var(--topbar-submenu-border);
 }
 
 .NavHeader{
     display: flex;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     height: 100%;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +22,7 @@
 .NavHeader p {
     list-style: none;
     text-decoration: none;
-    color: var(--font-color-white);
+    color: var(--font-color-grey);
 }
 
 

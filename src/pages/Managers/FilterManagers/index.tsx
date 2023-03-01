@@ -1,4 +1,4 @@
-import styles from "./FilterManagers.module.css";
+import styles from "../../../components/Filter/Filter.module.css";
 import {useRecoilState} from "recoil";
 import {managerListFilterState} from "../../../state/atomManager";
 

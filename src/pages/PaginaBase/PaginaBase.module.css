@@ -3,7 +3,7 @@
     display: grid;
     height: auto;
     min-height: 100vh;
-    grid-template-rows: 8rem 1fr;
+    grid-template-rows: 7rem 1fr;
     grid-template-columns: 24rem 1fr ;
     grid-template-areas:
         "bl bn   bn"
@@ -23,9 +23,9 @@
 
 .corpo {
     grid-area: cont;
+    background: var(--bg-grey);
 }
 
 @media screen and (max-width: 450px) {
     .paginaBase{grid-template-columns: 0 1fr ;}
 }
-

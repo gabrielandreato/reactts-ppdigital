@@ -1,4 +1,4 @@
-import styles from "./FormRegistration.module.css"
+import styles from "../../../components/Form/Form.module.css";
 import Botao from "../../../components/Botao";
 import {SubNavBar} from "../../../components/SubNavBar";
 import {useNavigate, useParams} from "react-router-dom";

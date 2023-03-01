@@ -1,4 +1,4 @@
-import styles from "./FilterCoursesByResponsability.module.css";
+import styles from "../../../components/Filter/Filter.module.css";
 import {useRecoilState} from "recoil";
 import {coursesByResponsabilityListFilterState} from "../../../state/atomCourseByResponsability";
 

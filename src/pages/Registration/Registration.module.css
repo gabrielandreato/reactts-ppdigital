@@ -4,6 +4,7 @@
     grid-template-rows: 6rem 1fr 6rem;
     grid-template-areas: "h" "t" "f";
 }
+
 .Header {
     grid-area: h;
 }
@@ -12,7 +13,6 @@
     grid-area: t;
     display: flex;
     flex-direction: column;
-    padding-top: 3rem;
 }
 
 .Footer {
@@ -23,4 +23,3 @@
     display: flex;
 
 }
-

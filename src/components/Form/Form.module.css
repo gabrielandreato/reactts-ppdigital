@@ -1,0 +1,25 @@
+.NavBar {
+    height: 4.8rem;
+}
+
+.FormWrapper {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    justify-content: center;
+    background: var(--bg-white);
+    padding: 2.4rem 0;
+
+
+}
+
+.Form {
+    width: 95%;
+}
+
+.Form label {
+}
+
+.Form button {
+    margin-top: 1.2rem
+}
