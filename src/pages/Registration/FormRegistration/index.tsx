@@ -84,7 +84,7 @@ export const FormRegistration = () => {
             <nav className={styles.NavBar}>
             <SubNavBar>
                 <li><p>Cadastro de Matriculas</p></li>
-                <li><BotaoNavBar onClick={() => navigate('/pagina-principal/matriculas')}>Voltar</BotaoNavBar></li>
+                {/* <li><BotaoNavBar onClick={() => navigate('/pagina-principal/matriculas')}>Voltar</BotaoNavBar></li> */}
             </SubNavBar>
             </nav>
         <div className={styles.FormWrapper}>

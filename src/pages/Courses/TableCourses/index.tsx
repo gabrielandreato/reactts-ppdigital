@@ -7,6 +7,7 @@ import http from "../../../http";
 import ICourses from "../../../interfaces/ICourses";
 import {useNavigate} from "react-router-dom";
 import {Pagination} from "../../../components/Pagination/Pagination";
+import { BotaoTable } from "../../../components/BotaoTable";
 
 
 export const TableCourses = () => {
@@ -68,7 +69,9 @@ export const TableCourses = () => {
                             <td>{course.id_kaptiva}</td>
                             <td>{dateFormat(course.due_date.toString())}</td>
                             <td>
-                                <BotaoNavBar onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>Editar</BotaoNavBar>
+                                <BotaoTable onClick={() => navigate(`/pagina-principal/formulario-curso/${course.id}/`)}>
+                                    <i className={`bi bi-pencil-square ${styles.TableIcon}`}></i>Editar
+                                </BotaoTable>
                             </td>
                         </tr>
                     )

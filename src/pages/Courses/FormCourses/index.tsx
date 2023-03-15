@@ -78,7 +78,7 @@ export const FormCourses = () => {
             <nav className={styles.NavBar}>
             <SubNavBar>
                 <li><p>Cadastro de Cursos</p></li>
-                <li><BotaoNavBar onClick={() => navigate('/pagina-principal/cursos')}>Voltar</BotaoNavBar></li>
+                {/* <li><BotaoNavBar onClick={() => navigate('/pagina-principal/cursos')}>Voltar</BotaoNavBar></li> */}
             </SubNavBar>
             </nav>
         <div className={styles.FormWrapper}>

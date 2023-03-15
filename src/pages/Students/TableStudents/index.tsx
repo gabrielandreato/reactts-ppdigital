@@ -7,6 +7,7 @@ import IStudent from "../../../interfaces/IStudent";
 import http from "../../../http";
 import { useNavigate, useParams } from "react-router-dom";
 import { Pagination } from "../../../components/Pagination/Pagination";
+import { BotaoTable } from "../../../components/BotaoTable";
 
 
 export const TableStudents = () => {
@@ -78,10 +79,12 @@ export const TableStudents = () => {
                                     <td>{student.responsability.responsability}</td>
                                     <td>{student.subarea.subarea}</td>
                                     <td>
-                                        <BotaoNavBar
+                                        <BotaoTable
                                             onClick={() => navigate(`/pagina-principal/formulario-aluno/${student.id}`)}
-                                        >Editar</BotaoNavBar>
-                                        <BotaoNavBar onClick={() => inativaStudent(student.id)}>Inativar</BotaoNavBar>
+                                        ><i className={`bi bi-pencil-square ${styles.TableIcon}`}></i>Editar</BotaoTable>
+                                        <BotaoTable onClick={() => inativaStudent(student.id)}>
+                                            <i className={`bi bi-x-circle ${styles.TableIcon}`}></i>Inativar
+                                        </BotaoTable>
                                     </td>
                                 </tr>
                             ))}

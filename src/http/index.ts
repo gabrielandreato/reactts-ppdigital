@@ -4,8 +4,8 @@ import axios, {AxiosRequestConfig} from "axios";
 const token = useGetToken;
 
 const http = axios.create({
-    // baseURL: 'http://191.101.15.157:7010/',
-    baseURL: 'http://127.0.0.1:8000/', // Dev url
+    baseURL: 'http://191.101.15.157:7010/',
+    // baseURL: 'http://127.0.0.1:8000/', // Dev url
 });
 
 http.interceptors.request.use((config:AxiosRequestConfig | any) => {

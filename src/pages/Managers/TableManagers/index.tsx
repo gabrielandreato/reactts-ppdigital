@@ -8,6 +8,7 @@ import http from "../../../http";
 import IStudent from "../../../interfaces/IStudent";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "../../../components/Pagination/Pagination";
+import { BotaoTable } from "../../../components/BotaoTable";
 
 export const TableManagers = () => {
 
@@ -69,10 +70,12 @@ export const TableManagers = () => {
                                     <td>{manager.name}</td>
                                     <td>{manager.responsability.responsability}</td>
                                     <td>
-                                        <BotaoNavBar
+                                        <BotaoTable
                                             onClick={() => navigate(`/pagina-principal/formulario-gestor/${manager.id}/`)}
-                                        >Editar</BotaoNavBar>
-                                        <BotaoNavBar onClick={() => inativaManager(manager.id)}>Inativar</BotaoNavBar>
+                                        ><i className={`bi bi-pencil-square ${styles.TableIcon}`}></i>Editar</BotaoTable>
+                                        <BotaoTable onClick={() => inativaManager(manager.id)}>
+                                            <i className={`bi bi-x-circle ${styles.TableIcon}`}></i>Inativar
+                                        </BotaoTable>
                                     </td>
                                 </tr>
                             )

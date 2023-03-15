@@ -17,8 +17,10 @@ export const Registration = () => {
                 <SubNavBar>
                     <li><p>Controle de Matriculas</p></li>
                     <li className={styles.NavFunctions}><FilterRegistration />
-                        <BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-matricula')}>Cadastrar Matricula</BotaoNavBar>
-                        {/* <BotaoNavBar >Atribuir</BotaoNavBar> */}
+                        <BotaoNavBar onClick={() => navigate('/pagina-principal/formulario-matricula')}>
+                            <i className={`bi bi-plus-square ${styles.SubNavButtonIcon}`}></i>
+                            Cadastrar Matricula
+                        </BotaoNavBar>
                     </li>
                 </SubNavBar>
             </div>

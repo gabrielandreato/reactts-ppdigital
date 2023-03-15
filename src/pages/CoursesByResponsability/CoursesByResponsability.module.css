@@ -22,6 +22,10 @@
 }
 .Footer .Nav {
     display: flex;
+}
 
+.SubNavButtonIcon {
+    padding-right: .4rem;
+    font-size: 1rem;
 }
 

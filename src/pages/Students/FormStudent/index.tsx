@@ -90,7 +90,7 @@ export const FormStudent = () => {
             <nav className={styles.NavBar}>
                 <SubNavBar>
                     <li><p>Cadastro de Alunos</p></li>
-                    <li><BotaoNavBar onClick={() => navigate('/pagina-principal/alunos')}>Voltar</BotaoNavBar></li>
+                    {/* <li><BotaoNavBar onClick={() => navigate('/pagina-principal/alunos')}>Voltar</BotaoNavBar></li> */}
                 </SubNavBar>
             </nav>
             <div className={styles.FormWrapper}>

@@ -10,6 +10,7 @@ import {
 } from "../../../state/atomCourseByResponsability";
 import ICourseByResponsability from "../../../interfaces/ICourseByResponsability";
 import {Pagination} from "../../../components/Pagination/Pagination";
+import { BotaoTable } from "../../../components/BotaoTable";
 
 export const TableCoursesByResponsability = () => {
 
@@ -67,10 +68,14 @@ export const TableCoursesByResponsability = () => {
                             <td>{courseByResponsability.responsability_name}</td>
                             <td>{courseByResponsability.course_name}</td>
                             <td>
-                                <BotaoNavBar
-                                    onClick={() => navigate(`/pagina-principal/formulario-curso-cargo/${courseByResponsability.id}/`)}>Editar</BotaoNavBar>
-                                <BotaoNavBar
-                                    onClick={() => deleteCourseByResponsability(courseByResponsability)}>Excluir</BotaoNavBar>
+                                <BotaoTable
+                                    onClick={() => navigate(`/pagina-principal/formulario-curso-cargo/${courseByResponsability.id}/`)}>
+                                        <i className={`bi bi-pencil-square ${styles.TableIcon}`}></i>Editar
+                                    </BotaoTable>
+                                <BotaoTable
+                                    onClick={() => deleteCourseByResponsability(courseByResponsability)}>
+                                        <i className={`bi bi-x-circle ${styles.TableIcon}`}></i>Excluir
+                                </BotaoTable>
                             </td>
                         </tr>
                     )

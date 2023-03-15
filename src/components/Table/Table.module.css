@@ -62,6 +62,9 @@
     color: var(--font-color-grey);
 }
 
+.TableIcon {
+    padding-right: .2rem;
+}
 
 .TableFoot {
     height: 3.2rem;

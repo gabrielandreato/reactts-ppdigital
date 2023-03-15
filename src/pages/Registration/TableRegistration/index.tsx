@@ -7,6 +7,7 @@ import http from "../../../http";
 import IRegistration from "../../../interfaces/IRegistration";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "../../../components/Pagination/Pagination";
+import { BotaoTable } from "../../../components/BotaoTable";
 
 export const TableRegistration = () => {
 
@@ -65,9 +66,12 @@ export const TableRegistration = () => {
                                     <td>{registration.course_name}</td>
                                     <td>{registration.student_name}</td>
                                     <td>
-                                        <BotaoNavBar
-                                            onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>Editar</BotaoNavBar>
-                                        <BotaoNavBar onClick={() => deleteRegistration(registration)}>Excluir</BotaoNavBar>
+                                        <BotaoTable
+                                            onClick={() => navigate(`/pagina-principal/formulario-matricula/${registration.id}/`)}>
+                                                <i className={`bi bi-pencil-square ${styles.TableIcon}`}></i>Editar
+                                        </BotaoTable>
+                                        <BotaoTable onClick={() => deleteRegistration(registration)}>
+                                            <i className={`bi bi-x-circle ${styles.TableIcon}`}></i>Excluir</BotaoTable>
                                     </td>
                                 </tr>
                             )

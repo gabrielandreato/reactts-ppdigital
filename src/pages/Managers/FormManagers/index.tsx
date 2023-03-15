@@ -82,7 +82,7 @@ export const FormManagers = () => {
             <nav className={styles.NavBar}>
             <SubNavBar>
                 <li><p>Cadastro de Gestor</p></li>
-                <li><BotaoNavBar onClick={() => navigate('/pagina-principal/gestores')}>Voltar</BotaoNavBar></li>
+                {/* <li><BotaoNavBar onClick={() => navigate('/pagina-principal/gestores')}>Voltar</BotaoNavBar></li> */}
             </SubNavBar>
             </nav>
         <div className={styles.FormWrapper}>
