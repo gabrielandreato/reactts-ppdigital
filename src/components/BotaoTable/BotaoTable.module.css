@@ -1,0 +1,15 @@
+.BotaoTable {
+    cursor: pointer;
+    transition: .5s;
+    border-radius: .8rem;
+    color: var(--font-color-grey-inative);
+    padding: .8rem;
+    
+}
+
+.BotaoTable:hover {
+    cursor: pointer;
+    transition: .5s;
+    
+    color: var(--font-color-grey);
+}
